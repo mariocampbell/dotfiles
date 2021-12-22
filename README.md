@@ -17,7 +17,7 @@ xmonad.hs
 .zshrc.pre-oh-my-zsh
 
 #### DUNST
-~/.config/dunst/dunstrc -> VivoBook
+~/.config/dunst/dunstrc
 
 Listado de aplicaciones a instalar
 --------------------------------------------
@@ -34,7 +34,7 @@ Listado de aplicaciones a instalar
 
 - chromium
 - pcmanfm
-- flamesho
+- flameshot
 
 - zsh
 - nvm

@@ -8,16 +8,17 @@ Config {
                         ]
    , bgColor =      "black"
    , fgColor =      "#646464"
-   , position =     Top
-   , border =       BottomB
+   -- , position =     Top
+   , position =     Static { xpos=1920, ypos=0, width=1888, height=16 }
+   -- , border =       BottomB
    , borderColor =  "#0088CC"
    -- , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% || %kbd% "
-   , template = " %StdinReader% }{ %date% | %battery% | %dynnetwork% | %kbd% "
+   --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% | %kbd% "
+   , template = " %StdinReader% }{ %date% | %battery% | %kbd% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -87,7 +88,7 @@ Config {
                              ] 10
 
         -- battery monitor
-        , Run Battery        [ "--template" , ": <acstatus>"
+        , Run Battery        [ "--template" , "<fn=2> <acstatus></fn>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -106,7 +107,7 @@ Config {
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         --, Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
-        , Run Date "<fc=#FFFFFF><fn=1>\xf073</fn> %a %d %Y - (%H:%M)</fc> " "date" 50
+        , Run Date "<fc=#FFFFFF><fn=2>\xf073</fn> %a %d %Y - (%H:%M)</fc> " "date" 50
 
         -- keyboard layout indicator
         , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")

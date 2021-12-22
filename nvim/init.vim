@@ -36,7 +36,7 @@ set background=dark " Fondo del tema: dark o light
 
 " =============================== 
 " PLUGINS
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
   " IDE
   " Navegacion de archivos
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -59,6 +59,7 @@ endif
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
+  Plug 'norcalli/nvim-colorizer.lua'
   Plug 'navarasu/onedark.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -102,6 +103,10 @@ call plug#end()
   
   " rainbow
   let g:rainbow_active = 1
+
+  " Colorizer
+  let g:ColorizerAttachToBuffer = 1
+  let g:ColorizerToggle = 1
 
   colorscheme onedark
 

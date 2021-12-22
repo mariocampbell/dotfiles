@@ -248,6 +248,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
+    spawnOnce "stalonetray &"
     spawnOnce "picom &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xmobar &"
