@@ -71,7 +71,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
     -- launch xscreensaver
-    , ((modm .|. shiftMask, xK_x), spawn "betterlockscreen --lock")
+    , ((modm .|. shiftMask, xK_l), spawn "betterlockscreen --lock")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
