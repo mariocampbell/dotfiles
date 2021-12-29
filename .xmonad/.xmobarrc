@@ -10,7 +10,7 @@ Config {
    , bgColor =      "black"
    , fgColor =      "#646464"
    -- , position =     Top
-   , position =     Static { xpos=1920, ypos=0, width=1888, height=16 }
+   , position =     Static { xpos=1600, ypos=0, width=1888, height=16 }
    -- , border =       BottomB
    , borderColor =  "#0088CC"
    -- , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."

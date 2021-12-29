@@ -257,6 +257,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
+    spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
     spawnOnce "picom &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
@@ -264,7 +265,6 @@ myStartupHook = do
     spawnOnce "flameshot &"
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "stalonetray &"
-    spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
