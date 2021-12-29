@@ -1,6 +1,6 @@
 Config { 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:style=bold:antialias=true"
+     font =         "xft:Bitstream Vera Sans Mono:size=8:style=bold:antialias=true"
    , additionalFonts = [ 
                           "xft:mononoki Nerd Font:style=Regular:size=9:"
                         , "xft:Font Awesome 5 Free Solid:style=Solid:size=9"
@@ -19,7 +19,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% | %kbd% "
-   , template = " %StdinReader% }{ %date% | %hour% | %battery% | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | %kbd% "
+   , template = " %StdinReader% }{ %date% | %hour% | %battery% | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | %kbd% "
 
      -- <fc=#000000></fc>
      -- <fc=#E06C75></fc>
