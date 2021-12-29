@@ -21,6 +21,7 @@ xmonad.hs
 
 Listado de aplicaciones a instalar
 --------------------------------------------
+- xf86-video-intel (drivers intel)
 - neovim
 - git
 - xmonad
@@ -31,6 +32,9 @@ Listado de aplicaciones a instalar
 - arandr
 - blueberry
 - dunst
+- i3lock
+- betterlockscreen
+- pulsemixer
 
 - chromium
 - pcmanfm
@@ -44,11 +48,8 @@ lista de deseos
 - configuracion de wifi
 - calculadora
 - calendario
-- control de audio ui (por termianl)
-- blockeo de pantalla (i3clock)
 - Suspender sistema
 
 lista para inverstigar
 --------------------------------------------
-- i3clock
-- control de audio por terminal
+- 

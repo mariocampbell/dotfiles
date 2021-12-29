@@ -56,6 +56,7 @@ endif
   Plug 'neoclide/coc-git'
   Plug 'sheerun/vim-polyglot'
   Plug 'pangloss/vim-javascript'
+  Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
@@ -64,7 +65,7 @@ endif
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'frazrepo/vim-rainbow'
-
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   " Git
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'

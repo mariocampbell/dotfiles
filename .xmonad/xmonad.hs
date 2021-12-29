@@ -12,7 +12,9 @@ import System.Exit
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
+import XMonad.Layout.ThreeColumns
 
+import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -50,7 +52,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -67,6 +69,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
+
+    -- launch xscreensaver
+    , ((modm .|. shiftMask, xK_x), spawn "betterlockscreen --lock blur")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -184,10 +189,13 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = tiled ||| Mirror tiled ||| threeColumns ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
+     
+     -- default tiling algorithm partitions the screen into three panes
+     threeColumns   = ThreeColMid nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -216,6 +224,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "pulsemixer"     --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -248,19 +257,27 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "stalonetray &"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
     spawnOnce "picom &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xmobar &"
     spawnOnce "flameshot &"
-    spawnOnce "xrandr --output eDP-1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal"
+    spawnOnce "xsetroot -cursor_name left_ptr"
+    spawnOnce "stalonetray &"
+    spawnOnce "xrandr --output eDP-1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
 myBar = "xmobar" 
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar
-myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]" }
+myPP = xmobarPP { 
+                    ppCurrent = xmobarColor "#c678dd" "" . wrap "[" "]" 
+                  , ppVisible = xmobarColor "#56b6c2" "" . wrap "(" ")" 
+                  , ppTitle = xmobarColor "#61aeee" ""
+                  , ppLayout = xmobarColor "#d19a66" ""
+                  , ppHidden = xmobarColor "#5c6370" ""
+                }
 
 -- Key binding to the gap for the bar
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
@@ -300,6 +317,21 @@ defaults = def {
         logHook            = myLogHook,
         startupHook        = myStartupHook
     }
+    -- `additionalKeys` [
+            -- ((mod1Mask, xK_b        ), spawnOnce "blueberry")
+            --((modm, xK_f ), spawn "echo 'hello'")
+            -- , ("<XF86AudioMute>",        spawn "amixer -q sset Master toggle" )
+            -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))
+            -- ((0, xF86XK_AudioLowerVolume ), spawn ("amixer -D pulse -q set Master 2%-; " ++ osd_cat_bar_command ++ "`amixer -D pulse get Master | awk '/Front Right:/ { print $5;}' | tr -d '[]'`")),
+            -- ((0, xF86XK_AudioRaiseVolume ), spawn ("amixer -D pulse -q set Master 2%+; " ++ osd_cat_bar_command ++ "`amixer -D pulse get Master | awk '/Front Right:/ { print $5;}' | tr -d '[]'`")),
+            -- ((0, xF86XK_AudioMicMute     ), spawn "amixer -D pulse -q set Capture toggle"),
+            -- ((0, xF86XK_MonBrightnessDown), spawn ("xbacklight -5; " ++ osd_cat_bar_command ++ "`xbacklight`")),
+            -- ((0, xF86XK_MonBrightnessUp  ), spawn ("xbacklight +5; " ++ osd_cat_bar_command ++ "`xbacklight`")),
+            -- ((0, xF86XK_Display          ), spawn ""),
+            -- ((0, xF86XK_WLAN             ), spawn "STATE=\"un`rfkill -no soft list wlan`\"; rkill ${STATE#unun} wlan"),
+            -- ((0, xF86XK_Tools            ), spawn "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"),
+            -- ((0, xF86XK_Bluetooth        ), spawn "STATE=\"un`rfkill -no soft list bluetooth`\"; rkill ${STATE#unun} bluetooth")
+            --]
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String

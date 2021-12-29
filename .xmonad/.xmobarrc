@@ -1,10 +1,11 @@
 Config { 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+     font =         "xft:Bitstream Vera Sans Mono:size=9:style=bold:antialias=true"
    , additionalFonts = [ 
                           "xft:mononoki Nerd Font:style=Regular:size=9:"
                         , "xft:Font Awesome 5 Free Solid:style=Solid:size=9"
                         , "xft:Font Awesome 5 Free Regular:style=Regular:size=9"
+                        , "xft:Font Awesome 5 Brands Regular:style=Regular:size=9"
                         ]
    , bgColor =      "black"
    , fgColor =      "#646464"
@@ -18,7 +19,24 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% | %kbd% "
-   , template = " %StdinReader% }{ %date% | %battery% | %kbd% "
+   , template = " %StdinReader% }{ %date% | %hour% | %battery% | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | %kbd% "
+
+     -- <fc=#000000></fc>
+     -- <fc=#E06C75></fc>
+     -- <fc=#98c379></fc>
+     -- <fc=#d19a66></fc>
+     -- <fc=#61aeee></fc>
+     -- <fc=#c678dd></fc>
+     -- <fc=#56b6c2></fc>
+     -- <fc=#abb2bf></fc>
+     -- <fc=#5c6370></fc>
+     -- <fc=#e06c75></fc>
+     -- <fc=#98c379></fc>
+     -- <fc=#d19a66></fc>
+     -- <fc=#62afee></fc>
+     -- <fc=#c678dd></fc>
+     -- <fc=#56b6c2></fc>
+     -- <fc=#ffffff></fc>
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -88,7 +106,7 @@ Config {
                              ] 10
 
         -- battery monitor
-        , Run Battery        [ "--template" , "<fn=2> <acstatus></fn>"
+        , Run Battery        [ "--template" , "<fc=#98c379><fn=2> <acstatus></fn></fc>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -99,19 +117,25 @@ Config {
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       , "-O"	, "<fc=#98c379>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-i"	, "<fc=#98c379>Charged</fc>"
                              ] 50
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         --, Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
-        , Run Date "<fc=#FFFFFF><fn=2>\xf073</fn> %a %d %Y - (%H:%M)</fc> " "date" 50
+        , Run Date "<action='gnome-calendar' ><fc=#c678dd><fn=2></fn> %a %d %Y</fc></action> " "date" 50
+
+        , Run Date "<fc=#56b6c2><fn=2></fn> %H:%M</fc> " "hour" 50
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
-                             , ("us"         , "<fc=#8B0000>US</fc>")
+        , Run Kbd            [ ("es" , "<fc=#e06c75><fn=2></fn> ES</fc>")
+                             , ("us" , "<fc=#e06c75><fn=2></fn> US</fc>")
                              ]
+      
+            , Run Volume "default" "Master" [] 10
+            , Run Alsa "default" "Master" []
+
         ]
    }
