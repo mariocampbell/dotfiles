@@ -39,17 +39,18 @@ Listado de aplicaciones a instalar
 - chromium
 - pcmanfm
 - flameshot
+- calcurse
 
 - zsh
 - nvm
 
 lista de deseos
 --------------------------------------------
-- configuracion de wifi
+- configuracion de wifi (nmtui)
 - calculadora
-- calendario
+- calendario (calcurse)
 - Suspender sistema
 
 lista para inverstigar
 --------------------------------------------
-- 
+- animaciones en picom

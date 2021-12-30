@@ -1,6 +1,23 @@
+-- <fc=#000000></fc>
+-- <fc=#E06C75></fc>
+-- <fc=#98c379></fc>
+-- <fc=#d19a66></fc>
+-- <fc=#61aeee></fc>
+-- <fc=#c678dd></fc>
+-- <fc=#56b6c2></fc>
+-- <fc=#abb2bf></fc>
+-- <fc=#5c6370></fc>
+-- <fc=#e06c75></fc>
+-- <fc=#98c379></fc>
+-- <fc=#d19a66></fc>
+-- <fc=#62afee></fc>
+-- <fc=#c678dd></fc>
+-- <fc=#56b6c2></fc>
+-- <fc=#ffffff></fc>
+
 Config { 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=8:style=bold:antialias=true"
+     font =         "xft:Bitstream Vera Sans Mono:size=9:style=bold:antialias=true"
    , additionalFonts = [ 
                           "xft:mononoki Nerd Font:style=Regular:size=9:"
                         , "xft:Font Awesome 5 Free Solid:style=Solid:size=9"
@@ -19,25 +36,8 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% | %kbd% "
-   , template = " %StdinReader% }{ %date% | %hour% | %battery% | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | %kbd% "
-
-     -- <fc=#000000></fc>
-     -- <fc=#E06C75></fc>
-     -- <fc=#98c379></fc>
-     -- <fc=#d19a66></fc>
-     -- <fc=#61aeee></fc>
-     -- <fc=#c678dd></fc>
-     -- <fc=#56b6c2></fc>
-     -- <fc=#abb2bf></fc>
-     -- <fc=#5c6370></fc>
-     -- <fc=#e06c75></fc>
-     -- <fc=#98c379></fc>
-     -- <fc=#d19a66></fc>
-     -- <fc=#62afee></fc>
-     -- <fc=#c678dd></fc>
-     -- <fc=#56b6c2></fc>
-     -- <fc=#ffffff></fc>
-
+   , template = " %StdinReader% }{ %date% | %hour% | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | %battery% | %wlo1wi% | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | %SANT% | %kbd% "
+     
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
@@ -63,8 +63,25 @@ Config {
    , commands = 
 
         -- weather monitor
-        [ Run Weather "SANT" [ "--template", "<skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
-                             ] 36000
+        [ Run Weather "LEBL" [ "--template", "<skyCondition> <fc=#4682B4><tempC>°C</fc>" ] 36000
+
+         , Run WeatherX "SANT"
+             [ ("clear", "")
+             , ("sunny", "")
+             , ("mostly clear", "")
+             , ("mostly sunny", "")
+             , ("partly sunny", "")
+             , ("fair", "")
+             , ("cloudy","☁")
+             , ("overcast","☁")
+             , ("partly cloudy", "")
+             , ("mostly cloudy", "")
+             , ("considerable cloudiness", "")]
+             -- ["-t", "<fc=#4682B4><fn=2><skyCondition></fn> <tempC>°C</fc> <rh>% <windKmh> km/h (<hour>)"
+             ["-t", "<fc=#4682B4><skyCondition><tempC>°C</fc>"
+             , "-L","15", "-H", "28", "--normal", "#4682B4"
+             , "--high", "#d19a66", "--low", "#56b6c2"]
+             18000
 
         -- StdinReader
         , Run StdinReader
@@ -78,40 +95,13 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
-        -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
-                             , "--Low"      , "50"         -- units: %
-                             , "--High"     , "85"         -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
-
-        -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
-                             , "--Low"      , "70"        -- units: °C
-                             , "--High"     , "80"        -- units: °C
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 50
-                          
-        -- memory usage monitor
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
-
         -- battery monitor
         , Run Battery        [ "--template" , "<fc=#98c379><fn=2> <acstatus></fn></fc>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--low"      , "#e06c75"
+                             , "--normal"   , "#4682B4"
+                             , "--high"     , "#98c379"
 
                              , "--" -- battery specific options
                                        -- discharging status
@@ -124,18 +114,27 @@ Config {
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        --, Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
-        , Run Date "<action='gnome-calendar' ><fc=#c678dd><fn=2></fn> %a %d %Y</fc></action> " "date" 50
 
+        -- Date indicator
+        , Run Date "<action='notify-send \"hello\"' ><fc=#c678dd><fn=2></fn> %a %d %Y</fc></action> " "date" 50
+
+        -- Time indicator
         , Run Date "<fc=#56b6c2><fn=2></fn> %H:%M</fc> " "hour" 50
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("es" , "<fc=#e06c75><fn=2></fn> ES</fc>")
-                             , ("us" , "<fc=#e06c75><fn=2></fn> US</fc>")
+        , Run Kbd            [ ("es" , "<fc=#ffffff><fn=2></fn> ES</fc>")
+                             , ("us" , "<fn=2></fn> US")
                              ]
       
-            , Run Volume "default" "Master" [] 10
-            , Run Alsa "default" "Master" []
+        -- command cuscom
+        , Run Com "tilix" ["-e", "pulsemixer"] "pulsemixer" 0
+
+        -- volume indicator
+        , Run Volume "default" "Master" [] 10
+        , Run Alsa "default" "Master" []
+
+        -- wireless interface
+        , Run Wireless "wlo1" ["-t", "<fc=#e06c75><fn=2></fn> <ssid></fc> (<quality>%)"] 3600
 
         ]
    }
