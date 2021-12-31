@@ -71,7 +71,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
     -- launch xscreensaver
-    , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock")
+    , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -258,7 +258,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock\" -detectsleep"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
     -- spawnOnce "picom &"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"

@@ -74,11 +74,12 @@ Config {
              , ("fair", "")
              , ("cloudy","☁")
              , ("overcast","☁")
-             , ("partly cloudy", "")
+             , ("partly cloudy", "☁")
+             , ("partly cloudy", "")
              , ("mostly cloudy", "")
              , ("considerable cloudiness", "")]
              -- ["-t", "<fc=#4682B4><fn=2><skyCondition></fn> <tempC>°C</fc> <rh>% <windKmh> km/h (<hour>)"
-             ["-t", "<fc=#4682B4><skyCondition><tempC>°C</fc>"
+             ["-t", "<fc=#4682B4><fn=2><skyCondition></fn> <tempC>°C</fc>"
              , "-L","15", "-H", "28", "--normal", "#4682B4"
              , "--high", "#d19a66", "--low", "#56b6c2"]
              18000
