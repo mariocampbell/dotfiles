@@ -17,7 +17,7 @@
 
 Config { 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:style=bold:antialias=true"
+     font =         "xft:JetBrainsMono :size=9:style=Bold:antialias=true"
    , additionalFonts = [ 
                           "xft:mononoki Nerd Font:style=Regular:size=9:"
                         , "xft:Font Awesome 5 Free Solid:style=Solid:size=9"
