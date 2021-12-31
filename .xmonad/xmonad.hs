@@ -34,7 +34,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -71,7 +71,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
     -- launch xscreensaver
-    , ((modm .|. shiftMask, xK_l), spawn "betterlockscreen --lock")
+    , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -259,7 +259,8 @@ myLogHook = return ()
 myStartupHook = do
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock\" -detectsleep"
-    spawnOnce "picom &"
+    -- spawnOnce "picom &"
+    spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xmobar &"
     spawnOnce "flameshot &"
