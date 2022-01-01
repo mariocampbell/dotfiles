@@ -32,7 +32,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %StdinReader% } %date% { %wlo1wi%  %default:Master%  %battery%  %SANT%  %kbd%        "
+   , template = " %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%  %default:Master%  %battery%  %SANT%  %kbd%        "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -86,6 +86,7 @@ Config {
 
         -- Date indicator
         , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
+        , Run Com "date" ["+%A %d de %b - %H:%M"] "myDate" 50
 
         -- keyboard layout indicator
         , Run Kbd            [ ("es" , "<fc=#e06c75><fn=1></fn> ES</fc>")

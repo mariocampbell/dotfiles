@@ -269,14 +269,20 @@ myStartupHook = do
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
-myBar = "xmobar" 
+myBar = "LANG=es_AR.utf-8 xmobar" 
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar
 myPP = xmobarPP { 
                     ppCurrent = xmobarColor "#0088CC" "" . wrap "[" "]" 
-                  , ppVisible = xmobarColor "#C678DD" "" . wrap "(" ")" 
-                  , ppTitle = xmobarColor "#abb2bf" ""
-                  , ppLayout = xmobarColor "#abb2bf" ""
+                  , ppVisible = xmobarColor "#ffffff" "" . wrap "(" ")" 
+                  , ppTitle = xmobarColor "#abb2bf" "" . shorten 30
+                  -- , ppLayout = xmobarColor "#abb2bf" ""
+                   , ppLayout = (\layout -> case layout of
+                                   "Spacing Tall"        -> "Tall"
+                                   "Spacing Mirror Tall" -> "Mirror"
+                                   "Spacing ThreeCol"    -> "ThreeCol"
+                                   "Spacing Full"      -> "Full"
+                                )
                   , ppHidden = xmobarColor "#5c6370" ""
                 }
 
