@@ -74,7 +74,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -266,6 +266,7 @@ myStartupHook = do
     spawnOnce "flameshot &"
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "stalonetray &"
+    spawnOnce "blueberry-tray &"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
@@ -273,10 +274,10 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar
 myPP = xmobarPP { 
-                    ppCurrent = xmobarColor "#c678dd" "" . wrap "[" "]" 
-                  , ppVisible = xmobarColor "#56b6c2" "" . wrap "(" ")" 
-                  , ppTitle = xmobarColor "#61aeee" ""
-                  , ppLayout = xmobarColor "#d19a66" ""
+                    ppCurrent = xmobarColor "#0088CC" "" . wrap "[" "]" 
+                  , ppVisible = xmobarColor "#C678DD" "" . wrap "(" ")" 
+                  , ppTitle = xmobarColor "#abb2bf" ""
+                  , ppLayout = xmobarColor "#abb2bf" ""
                   , ppHidden = xmobarColor "#5c6370" ""
                 }
 

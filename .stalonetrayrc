@@ -35,7 +35,7 @@ fuzzy_edges 0
 # geometry <geometry>        # tray's geometry in standard X notation; width and
                              # height are specified in slot_size multiples
 #geometry 1x1+0+0
-geometry 2x1-0+0
+geometry 3x1-0+0
 #max_geometry 5x1-325-10
 
 # grow_gravity <gravity>     # one of N, S, E, W, NW, NE, SW, SE; tray will grow
@@ -49,7 +49,7 @@ grow_gravity NE
 icon_gravity NE
 
 # icon_size <int>            # specifies dimensions of typical icon slot
-icon_size 12
+icon_size 5
 
 # log_level <level>          # controls the amount of logging output, level can
                              # be err (default), info, or trace (enabled only
@@ -58,7 +58,7 @@ icon_size 12
 log_level err
 
 # kludges kludge[,kludge]    # enable specific kludges to work around
-kludges force_icons_size                             # non-conforming WMs and/or stalonetray bugs.
+kludges fix_window_pos       # non-conforming WMs and/or stalonetray bugs.
                              # NEW in @VERSION_STR@. Argument is a
                              # comma-separated list of
                              # * fix_window_pos - fix tray window position on
@@ -79,7 +79,7 @@ no_shrink false
 
 # parent_bg [<bool>]         # whether to use pseudo-transparency
                              # (looks better when reparented into smth like FvwmButtons)
-parent_bg false
+parent_bg true
 
 # pixmap_bg <path_to_xpm>    # use pixmap from specified xpm file for (tiled) background
 # pixmap_bg /home/user/.stalonetraybg.xpm

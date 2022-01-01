@@ -17,26 +17,22 @@
 
 Config { 
    -- appearance
-     font =         "xft:JetBrainsMono :size=9:style=Bold:antialias=true"
-   , additionalFonts = [ 
-                          "xft:mononoki Nerd Font:style=Regular:size=9:"
-                        , "xft:Font Awesome 5 Free Solid:style=Solid:size=9"
-                        , "xft:Font Awesome 5 Free Regular:style=Regular:size=9"
-                        , "xft:Font Awesome 5 Brands Regular:style=Regular:size=9"
-                        ]
-   , bgColor =      "black"
-   , fgColor =      "#646464"
-   -- , position =     Top
-   , position =     Static { xpos=1600, ypos=0, width=1888, height=16 }
-   -- , border =       BottomB
-   , borderColor =  "#0088CC"
-   -- , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
+     font =         "xft:Bitstream Vera Sans Mono:size=9:style=Regular:antialias=true"
+   , additionalFonts = [
+      "xft:JetBrainsMono Nerd Font Mono:size=18:style=Regular:antialias=true"
+      , "xft:JetBrainsMono Nerd Font Mono:size=10:style=Regular:antialias=true"
+      , "xft:Bitstream Vera Sans Mono:size=9:style=Bold:antialias=true"
+   ]
+   , bgColor =      "#000000"
+   , fgColor =      "#abb2bf"
+   , alpha = 100
+   , position =     Static { xpos=1600, ypos=0, width=1920, height=20 }
+   , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   --, template = "%StdinReader% | %battery% | %dynnetwork% }{ %RJTT% | %date% | %kbd% "
-   , template = " %StdinReader% }{ %date% | %hour% | <fc=#d19a66><fn=2></fn> %default:Master%</fc> | %battery% | %wlo1wi% | <action='blueberry'><fc=#61aeee><fn=4></fn></fc></action> | %SANT% | %kbd% "
+   , template = " %StdinReader% } %date% { %wlo1wi%  %default:Master%  %battery%  %SANT%  %kbd%        "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -63,79 +59,47 @@ Config {
    , commands = 
 
         -- weather monitor
-        [ Run Weather "LEBL" [ "--template", "<skyCondition> <fc=#4682B4><tempC>°C</fc>" ] 36000
-
-         , Run WeatherX "SANT"
-             [ ("clear", "")
-             , ("sunny", "")
-             , ("mostly clear", "")
-             , ("mostly sunny", "")
-             , ("partly sunny", "")
-             , ("fair", "")
-             , ("cloudy","☁")
-             , ("overcast","☁")
-             , ("partly cloudy", "☁")
-             , ("partly cloudy", "")
-             , ("mostly cloudy", "")
-             , ("considerable cloudiness", "")]
-             -- ["-t", "<fc=#4682B4><fn=2><skyCondition></fn> <tempC>°C</fc> <rh>% <windKmh> km/h (<hour>)"
-             ["-t", "<fc=#4682B4><fn=2><skyCondition></fn> <tempC>°C</fc>"
-             , "-L","15", "-H", "28", "--normal", "#4682B4"
-             , "--high", "#d19a66", "--low", "#56b6c2"]
-             18000
+        [ Run Weather "SANT" [ "--template", "<fn=1></fn> <tempC>°C" ] 36000
 
         -- StdinReader
         , Run StdinReader
 
-        -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                             , "--Low"      , "1000"       -- units: B/s
-                             , "--High"     , "5000"       -- units: B/s
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
-
         -- battery monitor
-        , Run Battery        [ "--template" , "<fc=#98c379><fn=2> <acstatus></fn></fc>"
+        , Run Battery        [ "--template" , "<acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "#e06c75"
-                             , "--normal"   , "#4682B4"
-                             , "--high"     , "#98c379"
+                             -- , "--normal"   , "#ffffff"
+                             -- , "--high"     , "#ffffff"
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
+                                       , "-o"	, "<fn=2></fn> <left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#98c379>Charging</fc>"
+                                       , "-O"	, "<fn=2></fn> Charging"
                                        -- charged status
-                                       , "-i"	, "<fc=#98c379>Charged</fc>"
+                                       , "-i"	, "<fn=2></fn> Charged"
                              ] 50
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
 
         -- Date indicator
-        , Run Date "<action='notify-send \"hello\"' ><fc=#c678dd><fn=2></fn> %a %d %Y</fc></action> " "date" 50
-
-        -- Time indicator
-        , Run Date "<fc=#56b6c2><fn=2></fn> %H:%M</fc> " "hour" 50
+        , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("es" , "<fc=#ffffff><fn=2></fn> ES</fc>")
-                             , ("us" , "<fn=2></fn> US")
+        , Run Kbd            [ ("es" , "<fc=#abb2bf><fn=1></fn> ES</fc>")
+                             , ("us" , "<fn=1></fn> US")
                              ]
       
         -- command cuscom
-        , Run Com "tilix" ["-e", "pulsemixer"] "pulsemixer" 0
+        , Run Com "tilix" ["-e", "pulsemixer"] "customaction" 36000
 
         -- volume indicator
-        , Run Volume "default" "Master" [] 10
-        , Run Alsa "default" "Master" []
+        , Run Volume "default" "Master" ["-t", "<action='pavucontrol'><fn=1>墳</fn> <volume>%</action>"] 10
 
         -- wireless interface
-        , Run Wireless "wlo1" ["-t", "<fc=#e06c75><fn=2></fn> <ssid></fc> (<quality>%)"] 3600
+        , Run Wireless "wlo1" ["-t", "<fn=1></fn> <ssid>"] 3600
 
         ]
    }
