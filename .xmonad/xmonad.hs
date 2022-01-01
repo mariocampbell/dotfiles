@@ -22,7 +22,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "tilix"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -259,14 +259,13 @@ myLogHook = return ()
 myStartupHook = do
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
-    -- spawnOnce "picom &"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xmobar &"
-    spawnOnce "flameshot &"
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "stalonetray &"
     spawnOnce "blueberry-tray &"
+    spawnOnce "flameshot &"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar

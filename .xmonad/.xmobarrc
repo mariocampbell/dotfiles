@@ -88,7 +88,7 @@ Config {
         , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("es" , "<fc=#abb2bf><fn=1></fn> ES</fc>")
+        , Run Kbd            [ ("es" , "<fc=#e06c75><fn=1></fn> ES</fc>")
                              , ("us" , "<fn=1></fn> US")
                              ]
       

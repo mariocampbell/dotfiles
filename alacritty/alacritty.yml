@@ -1,0 +1,61 @@
+window:
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+background_opacity: 1
+
+font:
+  normal:
+    family: Bitstream Vera Sans Mono
+    style: Regular
+
+  bold:
+    family: Bitstream Vera Sans Mono
+    style: Bold
+
+  italic:
+    family: Bitstream Vera Sans Mono
+    style: Oblique
+
+  bold_italic:
+    family: Bitstream Vera Sans Mono
+    style: Bold Oblique
+
+  size: 9
+draw_bold_text_with_bright_colors: true
+
+colors:
+  primary:
+    background: "#282c34"
+    foreground: "#abb2bf"
+  normal:
+    black: "#000000"
+    red: "#e06c75"
+    green: "#98c379"
+    yellow: "#d19a66"
+    blue: "#61aeee"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#ffffff"
+
+cursor:
+  style:
+    shape: Block
+    blinking: off
+    blink-interval: 750
+
+selection:
+  save_to_clipboard: false
+
+live_config_reload: true
+
+shell:
+  program: /usr/bin/zsh
