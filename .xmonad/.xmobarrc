@@ -33,7 +33,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%    %default:Master%    %battery%    %SANT%    %kbd%    <action='powermenu'><fn=1></fn></action>     "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%    %default:Master%    %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action='powermenu'><fn=1></fn></action>     "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -94,11 +94,14 @@ Config {
                              , ("us" , "<fn=1></fn> US")
                              ]
       
-        -- command cuscom
-        , Run Com "alacritty" ["-e", "pulsemixer"] "customaction" 36000
-
         -- volume indicator
-        , Run Volume "default" "Master" ["-t", "<action='pavucontrol'><fn=1>墳</fn> <volume>%</action>"] 10
+        , Run Volume "default" "Master" ["-t", "<action='pavucontrol'><status></action>"
+                                         , "--"
+                                         , "-C", "#abb2bf"
+                                         , "-O", "<fn=1>墳</fn> <volume>%"
+                                         , "-c", "#e06c75"
+                                         , "-o", "<fn=1>婢</fn>"
+                                        ] 10
 
         -- wireless interface
         , Run Wireless "wlo1" ["-t", "<action='rofi-wifi-menu'><fn=1></fn> <ssid></action>"] 3600
