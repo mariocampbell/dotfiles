@@ -17,11 +17,12 @@
 
 Config { 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:style=Regular:antialias=true"
+     -- font =         "xft:Bitstream Vera Sans Mono:size=9:style=Regular:antialias=true"
+     font =         "xft:Roboto:size=9:style=Medium:antialias=true"
    , additionalFonts = [
       "xft:JetBrainsMono Nerd Font Mono:size=18:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=10:style=Regular:antialias=true"
-      , "xft:Bitstream Vera Sans Mono:size=9:style=Bold:antialias=true"
+      , "xft:JetBrainsMono Nerd Font Mono:size=9:style=Regular:antialias=true"
+      , "xft:Roboto:size=10:style=Medium:antialias=true"
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
@@ -32,7 +33,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%  %default:Master%  %battery%  %SANT%  %kbd%        "
+   , template = "    <fn=1><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%    %default:Master%    %battery%    %SANT%    %kbd%    <action='powermenu'><fn=1></fn></action>     "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -74,11 +75,11 @@ Config {
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<fn=2></fn> <left>% (<timeleft>)"
+                                       , "-o"	, "<fn=1></fn> <left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fn=2></fn> Charging"
+                                       , "-O"	, "<fn=1></fn> Charging"
                                        -- charged status
-                                       , "-i"	, "<fn=2></fn> Charged"
+                                       , "-i"	, "<fn=1></fn> Charged"
                              ] 50
 
         -- time and date indicator 
@@ -86,7 +87,7 @@ Config {
 
         -- Date indicator
         , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
-        , Run Com "date" ["+%A %d de %b - %H:%M"] "myDate" 50
+        , Run Com "date" ["+%A, %d de %b - %H:%M"] "myDate" 50
 
         -- keyboard layout indicator
         , Run Kbd            [ ("es" , "<fc=#e06c75><fn=1></fn> ES</fc>")
@@ -94,13 +95,13 @@ Config {
                              ]
       
         -- command cuscom
-        , Run Com "tilix" ["-e", "pulsemixer"] "customaction" 36000
+        , Run Com "alacritty" ["-e", "pulsemixer"] "customaction" 36000
 
         -- volume indicator
         , Run Volume "default" "Master" ["-t", "<action='pavucontrol'><fn=1>墳</fn> <volume>%</action>"] 10
 
         -- wireless interface
-        , Run Wireless "wlo1" ["-t", "<fn=1></fn> <ssid>"] 3600
+        , Run Wireless "wlo1" ["-t", "<action='rofi-wifi-menu'><fn=1></fn> <ssid></action>"] 3600
 
         ]
    }

@@ -74,7 +74,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run")
+    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show calc")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -257,15 +257,15 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
+    spawnOnce "xmobar &"
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
-    spawnOnce "xmobar &"
     spawnOnce "xsetroot -cursor_name left_ptr"
-    spawnOnce "stalonetray &"
-    spawnOnce "blueberry-tray &"
-    spawnOnce "flameshot &"
+    -- spawnOnce "stalonetray &"
+    -- spawnOnce "blueberry-tray &"
+    -- spawnOnce "flameshot &"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
