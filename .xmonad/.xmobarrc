@@ -23,6 +23,7 @@ Config {
       "xft:JetBrainsMono Nerd Font Mono:size=18:style=Regular:antialias=true"
       , "xft:JetBrainsMono Nerd Font Mono:size=26:style=Regular:antialias=true"
       , "xft:Roboto:size=10:style=Medium:antialias=true"
+      , "xft:JetBrainsMono Nerd Font Mono:size=9:style=Regular:antialias=true"
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
@@ -33,7 +34,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%    %default:Master%    %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action='powermenu'><fn=1></fn></action>     "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> { %wlo1wi%    %default:Master%    %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action='powermenu'><fn=1>拉</fn></action>     "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -75,11 +76,11 @@ Config {
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<fn=1></fn> <left>% (<timeleft>)"
+                                       , "-o"	, "<fn=4></fn> <left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fn=1></fn> Charging"
+                                       , "-O"	, "<fn=1></fn> <left>%"
                                        -- charged status
-                                       , "-i"	, "<fn=1></fn> Charged"
+                                       , "-i"	, "<fn=1></fn> <left>%"
                              ] 50
 
         -- time and date indicator 
