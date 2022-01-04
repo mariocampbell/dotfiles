@@ -61,7 +61,24 @@ Config {
    , commands = 
 
         -- weather monitor
-        [ Run Weather "SANT" [ "--template", "<fn=1></fn> <tempC>°C" ] 36000
+        [ Run Weather "SANT1" [ "--template", "<fn=1></fn> <tempC>°C" ] 36000
+
+        , Run WeatherX "SANT"
+             [ ("clear", "")
+             , ("sunny", "")
+             , ("mostly clear", "")
+             , ("mostly sunny", "")
+             , ("partly sunny", "")
+             , ("fair", "🌑")
+             , ("cloudy","")
+             , ("overcast","")
+             , ("partly cloudy", "ﭼ")
+             , ("mostly cloudy", "歹")
+             , ("considerable cloudiness", "")]
+             ["-t", "<fn=1><skyConditionS></fn> <tempC>°"
+             , "-L","15", "-H", "30", "--normal", "#abb2bf"
+             , "--high", "#d19a66", "--low", "#61aeee"]
+             18000
 
         -- StdinReader
         , Run StdinReader

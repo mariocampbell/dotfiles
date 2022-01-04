@@ -70,10 +70,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
+    -- launch change keyboard languaje
+    , ((controlMask .|. shiftMask, xK_i), spawn "changekeyboard")
+
     -- launch xscreensaver
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
 
-    -- launch gmrun
+    -- launch calculator
     , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show calc")
 
     -- close focused window
@@ -189,7 +192,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| threeColumns ||| Full
+-- myLayout = tiled ||| Mirror tiled ||| threeColumns ||| Full
+myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -278,8 +282,8 @@ myPP = xmobarPP {
                   , ppTitle = xmobarColor "#abb2bf" "" . shorten 30
                   -- , ppLayout = xmobarColor "#abb2bf" ""
                    , ppLayout = (\layout -> case layout of
-                                   "Spacing Tall"        -> "Tall"
-                                   "Spacing Mirror Tall" -> "Mirror"
+                                   "Spacing Tall"        -> "Vertical"
+                                   "Spacing Mirror Tall" -> "Horizontal"
                                    "Spacing ThreeCol"    -> "ThreeCol"
                                    "Spacing Full"      -> "Full"
                                 )
