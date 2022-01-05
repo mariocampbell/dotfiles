@@ -52,7 +52,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = map show [1..9]
+myWorkspaces    = map show [1..12]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -66,6 +66,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+
+    -- launch powermenu
+    , ((modm,               xK_x     ), spawn "powermenu")
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
@@ -149,7 +152,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-[1..9], Move client to workspace N
     --
     [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1,xK_2,xK_3,xK_4,xK_5,xK_6,xK_7,xK_8,xK_9,xK_0,xK_minus,xK_equal]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
@@ -192,7 +195,6 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
--- myLayout = tiled ||| Mirror tiled ||| threeColumns ||| Full
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -228,7 +230,6 @@ myLayout = tiled ||| Mirror tiled ||| Full
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "pulsemixer"     --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -263,13 +264,10 @@ myLogHook = return ()
 myStartupHook = do
     spawnOnce "xmobar &"
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners 0-00"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
-    -- spawnOnce "stalonetray &"
-    -- spawnOnce "blueberry-tray &"
-    -- spawnOnce "flameshot &"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
