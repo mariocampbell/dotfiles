@@ -15,6 +15,7 @@ import XMonad.Hooks.ManageDocks
 
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.NoBorders
 
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
@@ -197,7 +198,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True $ (tiled ||| Mirror tiled) ||| full
+myLayout = 
+    spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True (tiled ||| Mirror tiled) ||| noBorders full
+
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
