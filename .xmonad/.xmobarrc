@@ -76,7 +76,7 @@ Config {
              , ("mostly cloudy", "歹")
              , ("considerable cloudiness", "")]
              ["-t", "<fn=1><skyConditionS></fn> <tempC>°C"
-             , "-L","15", "-H", "30", "--normal", "#abb2bf"
+             , "-L","15", "-H", "29", "--normal", "#abb2bf"
              , "--high", "#d19a66", "--low", "#61aeee"]
              18000
 
@@ -85,13 +85,15 @@ Config {
 
         -- battery monitor
         , Run Battery        [ "--template" , "<acstatus>"
-                             , "--Low"      , "10"        -- units: %
+                             , "--Low"      , "15"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "#e06c75"
                              -- , "--normal"   , "#ffffff"
                              -- , "--high"     , "#ffffff"
 
                              , "--" -- battery specific options
+                                       , "-A", "15"
+                                       , "-a", "dunstify \"Battery\" \"You must plug in the battery now\" -u critical -i ~/dotfiles/icons/fontawesome/battery-alert.svg"
                                        -- discharging status
                                        , "-o"	, "<fn=4></fn> <left>% (<timeleft>)"
                                        -- AC "on" status

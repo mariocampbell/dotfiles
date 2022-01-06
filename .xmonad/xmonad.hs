@@ -11,6 +11,8 @@ import Data.Monoid
 import System.Exit
 
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 
@@ -195,10 +197,13 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True $ (tiled ||| Mirror tiled) ||| full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
+
+     -- default Full tiling
+     full    = Full
      
      -- default tiling algorithm partitions the screen into three panes
      threeColumns   = ThreeColMid nmaster delta ratio
@@ -207,7 +212,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+     ratio   = 2/3
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
@@ -320,7 +325,7 @@ defaults = def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True $ myLayout,
+        layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
