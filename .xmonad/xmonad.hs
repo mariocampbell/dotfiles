@@ -272,7 +272,7 @@ myLogHook = return ()
 myStartupHook = do
     spawnOnce "xmobar &"
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners 0-00"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
