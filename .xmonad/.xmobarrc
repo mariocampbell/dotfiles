@@ -27,14 +27,14 @@ Config {
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
-   , alpha = 100
+   , alpha = 50
    , position =     Static { xpos=1600, ypos=0, width=1920, height=20 }
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader% } <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%wlo1wi%    %default:Master%    %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action='powermenu'><fn=1>拉</fn></action>    "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%wlo1wi%    %default:Master%    %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action='powermenu'><fn=1>拉</fn></action>    "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start

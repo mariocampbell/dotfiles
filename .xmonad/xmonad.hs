@@ -199,14 +199,14 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout = 
-    spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True (tiled ||| Mirror tiled) ||| noBorders full
+    spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True (tiled ||| Mirror tiled) ||| fullscreen
 
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
 
      -- default Full tiling
-     full    = Full
+     fullscreen    = noBorders Full
      
      -- default tiling algorithm partitions the screen into three panes
      threeColumns   = ThreeColMid nmaster delta ratio
@@ -291,7 +291,7 @@ myPP = xmobarPP {
                                    "Spacing Tall"        -> "Vertical"
                                    "Spacing Mirror Tall" -> "Horizontal"
                                    "Spacing ThreeCol"    -> "ThreeCol"
-                                   "Spacing Full"      -> "Full"
+                                   "Full"      -> "Full"
                                 )
                   , ppHidden = xmobarColor "#5c6370" ""
                 }

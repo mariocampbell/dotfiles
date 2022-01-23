@@ -27,3 +27,4 @@
 	tool = nvim
 [mergetool]
 	prompt = false
+	keepBackup = false
