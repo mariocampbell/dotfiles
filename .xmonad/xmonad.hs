@@ -22,6 +22,8 @@ import XMonad.Util.SpawnOnce
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+import XMonad.Actions.SpawnOn
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -238,6 +240,11 @@ myLayout =
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "discord"        --> doShift ( myWorkspaces !! 9 )
+    , className =? "Google-chrome"        --> doShift ( myWorkspaces !! 1 )
+    , className =? "Whatsapp-for-linux"  --> doShift ( myWorkspaces !! 10 )
+    , className =? "Slack"  --> doShift ( myWorkspaces !! 10 )
+    , className =? "TelegramDesktop"  --> doShift ( myWorkspaces !! 10 )
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -272,7 +279,7 @@ myLogHook = return ()
 myStartupHook = do
     spawnOnce "xmobar &"
     spawnOnce "xrandr --output eDP1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1600x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners 0-00"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
