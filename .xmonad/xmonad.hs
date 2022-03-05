@@ -344,9 +344,10 @@ defaults = def {
                }
     -- para conocer el nombre de la tecla multimedia "xev"
     `additionalKeys` [
-            ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 0 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
+                ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 0 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
               , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 0 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
               , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 0 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
+              , ((0                     , 0x1008FF31), spawn "pactl set-source-mute 2 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))
             -- ((0, xF86XK_AudioLowerVolume ), spawn ("amixer -D pulse -q set Master 2%-; " ++ osd_cat_bar_command ++ "`amixer -D pulse get Master | awk '/Front Right:/ { print $5;}' | tr -d '[]'`")),
             -- ((0, xF86XK_AudioRaiseVolume ), spawn ("amixer -D pulse -q set Master 2%+; " ++ osd_cat_bar_command ++ "`amixer -D pulse get Master | awk '/Front Right:/ { print $5;}' | tr -d '[]'`")),
