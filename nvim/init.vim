@@ -56,7 +56,9 @@ endif
   Plug 'neoclide/coc-git'
   Plug 'sheerun/vim-polyglot'
   Plug 'pangloss/vim-javascript'
-  Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
+  Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'kabouzeid/nvim-lspinstall'
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
