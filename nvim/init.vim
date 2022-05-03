@@ -150,8 +150,6 @@ call plug#end()
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
-  nmap <leader> do <Plug>(coc-codeaction-cursor)
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
   " autoclose pairs
   inoremap ( ()<left>
