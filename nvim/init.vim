@@ -52,7 +52,7 @@ endif
 
   " Autocompletado
   Plug 'mattn/emmet-vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-git'
   Plug 'sheerun/vim-polyglot'
   Plug 'pangloss/vim-javascript'
@@ -101,8 +101,17 @@ call plug#end()
   let g:kite_supported_languages = ['*'] " Python, JavaScript, Go
   
   " coc
-  autocmd FileType javascript let b:coc_suggest_disable=1
+  autocmd FileType javascript let b:coc_suggest_disable=0
   autocmd FileType scss setl iskeyword+=@-@
+
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint']
+
+  "coc-config
+  "{
+  "eslint.autoFixOnSave': true,
+  "javascript.suggest.autoImports": true, 
+  "typescript.suggest.autoImports": true
+  "}
   
   " rainbow
   let g:rainbow_active = 1
@@ -129,12 +138,6 @@ call plug#end()
   let g:blamer_enabled = 1
   let g:blamer_delay = 500 " default 1000
   
-  " Configuraciones de teclas
-  let mapleader=" "
-  nmap <Leader>nt :NERDTreeFind<CR>
-" =============================== 
-
-" =============================== 
 " MAPS
   " Navegacion de archivos
   let mapleader=" "
@@ -147,4 +150,11 @@ call plug#end()
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <leader> do <Plug>(coc-codeaction-cursor)
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+  " autoclose pairs
+  inoremap ( ()<left>
+  inoremap { {}<left>
+  inoremap [ []<left>
  " =============================== 
