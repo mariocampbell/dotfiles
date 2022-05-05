@@ -60,6 +60,7 @@ endif
   Plug 'neovim/nvim-lspconfig'
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'chun-yang/auto-pairs'
+  Plug 'alvan/vim-closetag'
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
