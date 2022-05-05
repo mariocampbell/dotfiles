@@ -59,6 +59,7 @@ endif
   Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'chun-yang/auto-pairs'
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
@@ -150,11 +151,4 @@ call plug#end()
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
-
-  " autoclose pairs
-  inoremap ( ()<left>
-  inoremap { {}<left>
-  inoremap [ []<left>
-  inoremap ' ''<left>
-  inoremap " ""<left>
  " =============================== 
