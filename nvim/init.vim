@@ -2,7 +2,7 @@ set rnu " Relative numbers, muestra los numero de arriba y abajo en relacion de 
 set number " Muestra los numeros ralativos a la izquierda de la terminal
 set mouse=a " Permite interaccion del mouse (seleccionar texto, mover el cursor)
 set numberwidth=1 " Separacion de los numeros de la izquierda con el margen 
-set clipboard=unnamed " Permite interaccion con el portapapeles del sistema
+set clipboard=unnamed " Permite interaccion con el portapapeles del sistema. Instalar xclip.
 syntax on " Muetra la sintaxis
 set showcmd " Habilita mostrar el historial de los ultimos comando ejecutados
 set ruler " Muestra en la parte inferior en que liea esta posicionado el cursor
@@ -60,6 +60,7 @@ endif
   Plug 'neovim/nvim-lspconfig'
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'chun-yang/auto-pairs'
+  Plug 'alvan/vim-closetag'
 
   "Themes
   "Plug 'romgrk/doom-one.vim'
