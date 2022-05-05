@@ -97,6 +97,10 @@ call plug#end()
   
   " Nerdtree
   let NERDTreeQuitOnOpen=1
+  " enable line numbers
+  let NERDTreeShowLineNumbers=1
+  " make sure relative line numbers are used
+  autocmd FileType nerdtree setlocal relativenumber
   
   " Kite
   let g:kite_supported_languages = ['*'] " Python, JavaScript, Go
