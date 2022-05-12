@@ -156,4 +156,7 @@ call plug#end()
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+
+  " atajos de vim
+  nnoremap <esc><esc> :noh<return><esc>
  " =============================== 
