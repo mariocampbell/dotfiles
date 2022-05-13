@@ -141,7 +141,7 @@ call plug#end()
   let g:onedark_terminal_italics=1
 
   "blamer (gitlens)
-  let g:blamer_enabled = 1
+  let g:blamer_enabled = 0
   let g:blamer_delay = 500 " default 1000
   
 " MAPS

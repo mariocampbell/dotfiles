@@ -19,6 +19,9 @@ xmonad.hs
 #### DUNST
 ~/.config/dunst/dunstrc
 
+#### TMUX
+~/.tmux.conf
+
 Listado de aplicaciones a instalar
 --------------------------------------------
 - xf86-video-intel (drivers intel)
@@ -35,6 +38,7 @@ Listado de aplicaciones a instalar
 - i3lock
 - betterlockscreen
 - pulsemixer
+- xclip (clipboard)
 
 - chromium
 - pcmanfm

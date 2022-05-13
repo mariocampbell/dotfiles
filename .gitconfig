@@ -6,6 +6,8 @@
 	st = status
 	ci = commit
 	br = branch
+	d = diff
+	dn = diff --name-only
 [core]
 	editor = nvim
 [filter "lfs"]
