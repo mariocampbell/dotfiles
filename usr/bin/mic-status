@@ -1,0 +1,7 @@
+#!/bin/sh
+STATUS=$(amixer | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')
+if [ "$STATUS" = "off" ]; then
+  echo "<fc=#e06c75><fn=5></fn></fc>"
+else
+  echo "<fn=6></fn>"
+fi
