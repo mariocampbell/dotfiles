@@ -72,6 +72,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
+    -- muted microphone
+    , ((controlMask .|. shiftMask, xK_m), spawn "volume-control mic")
+
     -- launch powermenu
     , ((modm,               xK_x     ), spawn "powermenu")
 
@@ -347,7 +350,7 @@ defaults = def {
                 ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 0 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
               , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 0 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
               , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 0 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
-              , ((0                     , 0x1008FF31), spawn "pactl set-source-mute 2 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
+              , ((0                     , 0x1008FF31), spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))
