@@ -283,7 +283,7 @@ myStartupHook = do
     spawnOnce "xrandr --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
-    spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
+    spawnOnce "feh --bg-fill ~/wallpaperArchlinux.png"
     spawnOnce "xsetroot -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
