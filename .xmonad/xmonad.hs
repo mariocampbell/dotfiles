@@ -73,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- muted microphone
-    , ((controlMask .|. shiftMask, xK_m), spawn "volume-control mic")
+    , ((controlMask .|. shiftMask, xK_m), spawn "microphone toggle")
 
     -- launch powermenu
     , ((modm,               xK_x     ), spawn "powermenu")
