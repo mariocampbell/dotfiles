@@ -85,7 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((controlMask .|. shiftMask, xK_i), spawn "changekeyboard")
 
     -- launch xscreensaver
-    , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
+    , ((modm .|. controlMask, xK_l), spawn "betterlockscreen -l")
 
     -- launch calculator
     , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show calc")
@@ -284,9 +284,9 @@ myStartupHook = do
     spawnOnce "xmobar &"
     -- spawnOnce "xrandr --output eDP1 --mode 1600x900 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xrandr --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners --00"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
-    spawnOnce "feh --bg-fill ~/wallpaperArchlinux.png"
+    spawnOnce "feh --bg-fill ~/ninja-wallpaper.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
 
 ------------------------------------------------------------------------

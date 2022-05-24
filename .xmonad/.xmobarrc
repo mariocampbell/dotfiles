@@ -7,8 +7,9 @@ Config {
       , "xft:JetBrainsMono Nerd Font Mono:size=26:style=Regular:antialias=true"
       , "xft:Roboto:size=10:style=Medium:antialias=true"
       , "xft:JetBrainsMono Nerd Font Mono:size=9:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=16:style=Regular:antialias=true"
+      , "xft:JetBrainsMono Nerd Font Mono:size=14:style=Regular:antialias=true"
       , "xft:JetBrainsMono Nerd Font Mono:size=12:style=Regular:antialias=true"
+      , "xft:JetBrainsMono Nerd Font Mono:size=11:style=Regular:antialias=true"
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
