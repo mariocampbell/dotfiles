@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$1" = "toggle" ]; then
+    mic="$(amixer set Capture toggle | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
+    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$mic" = "off" ] && echo "-mute").svg -r 100811
+    paplay ~/discord-$([ "$mic" = "on" ] && echo "un")mute-mic.ogg
+    exit 0
+fi
+
+if [ "$1" = "status" ]; then
+  STATUS=$(amixer | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')
+  if [ "$STATUS" = "off" ]; then
+    echo "<fc=#e06c75><fn=5></fn></fc>"
+    exit 0
+  else
+    echo "<fn=6></fn>"
+    exit 0
+  fi
+fi
