@@ -110,8 +110,8 @@ Config {
                                          , "-o", "<fn=1>婢</fn>"
                                         ] 10
 
-        -- mic indicator
-        , Run Com "mic-status" [] "mic" 5
+        -- microphone indicator
+        , Run Com "microphone" ["status"] "mic" 5
 
         -- wireless interface
         , Run Wireless "wlo1" ["-t", "<action='rofi-wifi-menu'><fn=1></fn> <ssid></action>"] 3600
