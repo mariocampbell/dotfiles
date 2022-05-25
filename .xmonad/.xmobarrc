@@ -102,7 +102,7 @@ Config {
                              ]
       
         -- volume indicator
-        , Run Volume "default" "Master" ["-t", "<action='pavucontrol'><status></action>"
+        , Run Volume "default" "Master" ["-t", "<action='exec-pulsemixer'><status></action>"
                                          , "--"
                                          , "-C", "#abb2bf"
                                          , "-O", "<fn=1>墳</fn> <volume>%"

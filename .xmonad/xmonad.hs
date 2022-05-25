@@ -282,7 +282,8 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
     spawnOnce "xmobar &"
-    spawnOnce "xrandr --output eDP1 --mode 1600x900 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
+    -- spawnOnce "xrandr --output eDP1 --mode 1600x900 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
+    spawnOnce "xrandr --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/ninja-wallpaper.jpg"
@@ -347,9 +348,9 @@ defaults = def {
                }
     -- para conocer el nombre de la tecla multimedia "xev"
     `additionalKeys` [
-                ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 0 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
-              , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 0 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
-              , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 0 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
+                ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 1 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
+              , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 1 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
+              , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 1 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
               , ((0                     , 0x1008FF31), spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
