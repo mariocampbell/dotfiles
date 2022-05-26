@@ -73,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- muted microphone
-    , ((controlMask .|. shiftMask, xK_m), spawn "microphone toggle")
+    , ((controlMask .|. shiftMask, xK_m), spawn "mic-control toggle")
 
     -- launch powermenu
     , ((modm,               xK_x     ), spawn "powermenu")
@@ -351,7 +351,7 @@ defaults = def {
                 ((0                     , 0x1008FF11), spawn "volume-control down")
               , ((0                     , 0x1008FF13), spawn "volume-control up")
               , ((0                     , 0x1008FF12), spawn "volume-control toggle")
-              , ((0                     , 0x1008FF31), spawn "microphone toggle")
+              , ((0                     , 0x1008FF31), spawn "mic-control toggle")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))

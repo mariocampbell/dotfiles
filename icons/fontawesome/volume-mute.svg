@@ -4,7 +4,7 @@
    version="1.1"
    id="svg136"
    sodipodi:docname="volume-mute.svg"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:version="1.1.2 (0a00cf5, 2022-02-04)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,25 +22,24 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.6014551"
-     inkscape:cx="136.33603"
+     inkscape:cx="604.36764"
      inkscape:cy="263.52757"
      inkscape:window-width="1257"
      inkscape:window-height="1034"
      inkscape:window-x="10"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg136" />
+     inkscape:current-layer="text218"
+     inkscape:pageshadow="2" />
   <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-  <text
-     xml:space="preserve"
-     style="font-size:858.26px;fill:#ffffff;stroke-width:71.5216"
-     x="18.507696"
-     y="563.41736"
+  <g
+     aria-label="婢"
+     transform="scale(1.0402157,0.96133907)"
      id="text218"
-     transform="scale(1.0402157,0.96133907)"><tspan
-       sodipodi:role="line"
-       id="tspan216"
-       x="18.507696"
-       y="563.41736"
-       style="fill:#ffffff;stroke-width:71.5216">婢</tspan></text>
+     style="font-size:678.793px;fill:#ff0000;stroke-width:56.566">
+    <path
+       d="M 276.69994,52.515192 220.68626,108.86031 276.69994,164.874 Z M 70.543067,25.999839 36.735992,59.806914 163.01536,186.41772 H 36.735992 v 159.755 H 143.12885 L 276.69994,480.07525 V 300.1023 l 114.01601,113.68457 q -27.50967,21.21228 -59.99098,31.48698 v 55.01936 q 55.01936,-13.92056 97.44392,-49.0534 L 483.18825,506.5906 516.99532,472.78353 276.69994,232.48815 Z M 463.30173,266.29522 q 0,37.45294 -13.92056,69.93424 l 40.10447,41.43024 Q 515.66955,326.28621 516.99532,266.29522 515.66955,178.79456 463.63317,115.82059 411.92824,52.515192 330.72497,32.297236 v 55.019357 q 58.66522,17.566417 94.79239,65.956937 36.45861,48.05908 37.78437,113.02169 z m -66.28838,0 q 0,-36.12717 -18.2293,-64.29973 -18.22931,-28.17256 -48.05908,-43.41889 v 58.99666 l 64.96261,64.96261 q 1.32577,-7.62316 1.32577,-16.24065 z"
+       id="path181"
+       style="fill:#ffffff" />
+  </g>
 </svg>

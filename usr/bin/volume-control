@@ -1,22 +1,24 @@
 #!/bin/bash
 
+CARD=0
+
 if [ "$1" = "toggle" ]; then
-    pactl set-sink-mute 1 toggle
-    volume="$(amixer get Master | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
-    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$volume" = "off" ] && echo "-mute").svg -r 100812
+    pactl set-sink-mute $CARD toggle
+    VOLUME="$(amixer get Master | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
+    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$VOLUME" = "off" ] && echo "-mute").svg -r 100812
     exit 0
 fi
 
 if [ "$1" = "up" ]; then
-    pactl set-sink-mute 1 false
-    pactl set-sink-volume 1 +5%
+    pactl set-sink-mute $CARD false
+    pactl set-sink-volume $CARD +5%
     dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811
     exit 0
 fi
 
 if [ "$1" = "down" ]; then
-    pactl set-sink-mute 1 false
-    pactl set-sink-volume 1 -5%
+    pactl set-sink-mute $CARD false
+    pactl set-sink-volume $CARD -5%
     dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811
     exit 0
 fi
