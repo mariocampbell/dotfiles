@@ -348,10 +348,10 @@ defaults = def {
                }
     -- para conocer el nombre de la tecla multimedia "xev"
     `additionalKeys` [
-                ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 1 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
-              , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 1 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
-              , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 1 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
-              , ((0                     , 0x1008FF31), spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
+                ((0                     , 0x1008FF11), spawn "volume-control down")
+              , ((0                     , 0x1008FF13), spawn "volume-control up")
+              , ((0                     , 0x1008FF12), spawn "volume-control toggle")
+              , ((0                     , 0x1008FF31), spawn "microphone toggle")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))
