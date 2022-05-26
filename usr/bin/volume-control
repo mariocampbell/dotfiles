@@ -5,7 +5,7 @@ CARD=1
 if [ "$1" = "toggle" ]; then
     pactl set-sink-mute $CARD toggle
     VOLUME="$(amixer get Master | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
-    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$VOLUME" = "off" ] && echo "-mute").svg -r 100812
+    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$VOLUME" = "off" ] && echo "-mute").svg -r 100811
     exit 0
 fi
 
