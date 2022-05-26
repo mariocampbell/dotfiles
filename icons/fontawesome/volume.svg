@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   viewBox="0 0 576 512"
+   viewBox="0 0 640 512"
    version="1.1"
-   id="svg136"
-   sodipodi:docname="volume-mute.svg"
+   id="svg4"
+   sodipodi:docname="volume.svg"
    inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs140" />
+     id="defs8" />
   <sodipodi:namedview
-     id="namedview138"
+     id="namedview6"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -21,26 +21,26 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.6014551"
-     inkscape:cx="136.33603"
-     inkscape:cy="263.52757"
+     inkscape:zoom="0.60145509"
+     inkscape:cx="144.6492"
+     inkscape:cy="211.9859"
      inkscape:window-width="1257"
      inkscape:window-height="1034"
      inkscape:window-x="10"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg136" />
+     inkscape:current-layer="svg4" />
   <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <text
      xml:space="preserve"
-     style="font-size:858.26px;fill:#ffffff;stroke-width:71.5216"
-     x="18.507696"
-     y="563.41736"
-     id="text218"
-     transform="scale(1.0402157,0.96133907)"><tspan
+     style="font-size:834.752px;fill:#ffffff;stroke-width:69.5628"
+     x="72.455093"
+     y="542.02917"
+     id="text319"
+     transform="scale(0.98845759,1.0116772)"><tspan
        sodipodi:role="line"
-       id="tspan216"
-       x="18.507696"
-       y="563.41736"
-       style="fill:#ffffff;stroke-width:71.5216">婢</tspan></text>
+       id="tspan317"
+       x="72.455093"
+       y="542.02917"
+       style="stroke-width:69.5628;fill:#ffffff">墳</tspan></text>
 </svg>
