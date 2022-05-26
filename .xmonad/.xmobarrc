@@ -102,7 +102,7 @@ Config {
                              ]
       
         -- volume indicator
-         , Run Volume "default" "Master" ["-t", "<action=`volume-control toggle` button=1><action=`tilix -e pulsemixer` button=3><action=`volume-control up` button=4><action=`volume-control down` button=5><status></action></action></action></action>"
+         , Run Volume "default" "Master" ["-t", "<action=`volume-control toggle` button=1><action=`pavucontrol` button=2><action=`tilix -e pulsemixer` button=3><action=`volume-control up` button=4><action=`volume-control down` button=5><status></action></action></action></action></action>"
                                          , "--"
                                          , "-C", "#abb2bf"
                                          , "-O", "<fn=1>墳</fn> <volume>%"
