@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 640 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="lan-us.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.60145509"
+     inkscape:cx="680.84884"
+     inkscape:cy="187.04638"
+     inkscape:window-width="1894"
+     inkscape:window-height="1054"
+     inkscape:window-x="1930"
+     inkscape:window-y="10"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4"
+     inkscape:pageshadow="2" />
+  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <g
+     aria-label="US"
+     id="text165"
+     style="font-size:559.501px;font-family:'JetBrainsMonoExtraBold Nerd Font Mono';-inkscape-font-specification:'JetBrainsMonoExtraBold Nerd Font Mono, Normal';fill:#ffffff;stroke-width:46.6254">
+    <path
+       d="m 147.95334,463.29511 q -30.77255,0 -55.950098,-8.39251 Q 67.385199,445.95058 49.481168,429.72505 32.136637,413.49953 22.625121,390.55999 13.673105,367.06095 13.673105,337.96689 V 54.859401 H 97.598251 V 337.40739 q 0,25.73705 12.868519,39.72457 13.42803,13.42803 37.48657,13.42803 23.49904,0 36.92706,-13.42803 13.42803,-13.98752 13.42803,-39.72457 V 54.859401 h 83.92514 V 337.96689 q 0,29.09406 -9.51151,52.5931 -8.95202,22.93954 -26.85605,39.16506 -17.34453,16.22553 -41.96257,25.17755 -24.61805,8.39251 -55.9501,8.39251 z"
+       id="path165"
+       style="fill:#ffffff" />
+    <path
+       d="m 483.65415,463.29511 q -31.33206,0 -57.0691,-7.83301 Q 400.848,447.06959 382.38447,432.52256 363.92094,417.41603 353.29042,396.155 342.6599,374.89396 340.9814,348.59741 h 83.92514 q 4.47601,41.96258 60.42611,41.96258 27.97505,0 42.52207,-11.74952 14.54703,-12.30903 14.54703,-32.45106 0,-17.90403 -11.74952,-30.77255 -11.19002,-12.86853 -31.33206,-17.34453 L 456.7981,288.73081 Q 401.967,276.42179 373.43245,245.08973 345.4574,213.19818 345.4574,163.96209 q 0,-25.73704 9.51152,-46.99808 10.07102,-21.261038 27.97505,-36.367564 17.90403,-15.106527 43.08157,-23.499041 25.73705,-8.392515 57.62861,-8.392515 59.8666,0 95.67466,29.653552 36.36757,29.653548 40.28407,82.246648 h -83.92514 q -2.23801,-18.46354 -16.78503,-28.53455 -13.98753,-10.63052 -37.48657,-10.63052 -24.61804,0 -38.60557,11.74952 -13.42802,11.74952 -13.42802,29.65355 0,15.66603 10.63052,27.41555 10.63052,11.19002 30.77255,15.66602 l 44.76008,10.07102 q 54.2716,12.30902 82.24664,44.76008 28.53455,31.89156 28.53455,81.68714 0,26.85605 -10.07101,49.23609 -10.07102,21.82054 -29.09405,38.04606 -18.46354,15.66603 -44.76008,24.61805 -26.29655,8.95201 -58.7476,8.95201 z"
+       id="path167"
+       style="fill:#ffffff" />
+  </g>
+</svg>

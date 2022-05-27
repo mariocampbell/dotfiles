@@ -1,2 +1,5 @@
 #!/bin/sh
-(setxkbmap -query | grep "layout:\s\+us") && setxkbmap es || setxkbmap us
+LAYOUT=$(setxkbmap -query | grep layout | sed -E 's/.*(us)/\1/')
+LANGUAJE=$([ "$LAYOUT" = "us" ] && echo "es" || echo "us")
+setxkbmap $LANGUAJE
+dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/lan-$LANGUAJE.svg -r 100818
