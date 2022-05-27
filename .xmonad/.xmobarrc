@@ -21,7 +21,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%wlo1wi%     %default:Master%     %battery%    %SANT%    <action='changekeyboard'>%kbd%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=1></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%wlo1wi%     %default:Master%     %battery%    <action='changekeyboard'>%kbd%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=1></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    %weather%    "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -112,6 +112,9 @@ Config {
 
         -- mic-control indicator
         , Run Com "mic-control" ["status"] "mic" 5
+
+        -- weather indicator
+        , Run Com "weather-control" [] "weather" 5
 
         -- bluetooth indicator
         , Run Com "bluetooth-control" ["status"] "bluetooth" 5
