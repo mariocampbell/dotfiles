@@ -73,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- muted microphone
-    , ((controlMask .|. shiftMask, xK_m), spawn "microphone toggle")
+    , ((controlMask .|. shiftMask, xK_m), spawn "mic-control toggle")
 
     -- launch powermenu
     , ((modm,               xK_x     ), spawn "powermenu")
@@ -284,7 +284,7 @@ myStartupHook = do
     spawnOnce "xmobar &"
     -- spawnOnce "xrandr --output eDP1 --mode 1600x900 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
     spawnOnce "xrandr --output eDP1 --mode 1600x900 --pos 0x0 --rotate normal --output HDMI1 --off --output HDMI2 --off --output VIRTUAL1 --off"
-    spawnOnce "xautolock -time 5 -locker \"betterlockscreen --lock blur\" -detectsleep -corners --00"
+    spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "picom -b --experimental-backends &"
     spawnOnce "feh --bg-fill ~/ninja-wallpaper.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
@@ -348,10 +348,10 @@ defaults = def {
                }
     -- para conocer el nombre de la tecla multimedia "xev"
     `additionalKeys` [
-                ((0                     , 0x1008FF11), spawn "pactl set-sink-volume 0 -5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811")
-              , ((0                     , 0x1008FF13), spawn "pactl set-sink-volume 0 +5% | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-up.svg -r 100811")
-              , ((0                     , 0x1008FF12), spawn "pactl set-sink-mute 0 toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-mute.svg -r 100811")
-              , ((0                     , 0x1008FF31), spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle | dunstify \"\" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone-mute.svg -r 100812")
+                ((0                     , 0x1008FF11), spawn "volume-control down")
+              , ((0                     , 0x1008FF13), spawn "volume-control up")
+              , ((0                     , 0x1008FF12), spawn "volume-control toggle")
+              , ((0                     , 0x1008FF31), spawn "mic-control toggle")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))

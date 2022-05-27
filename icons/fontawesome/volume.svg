@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 640 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="volume.svg"
+   inkscape:version="1.1.2 (0a00cf5, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.60145509"
+     inkscape:cx="614.34346"
+     inkscape:cy="211.9859"
+     inkscape:window-width="1257"
+     inkscape:window-height="1034"
+     inkscape:window-x="10"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4"
+     inkscape:pageshadow="2" />
+  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <g
+     aria-label="墳"
+     transform="matrix(0.84941573,0,0,0.86936914,7.6216139,38.845107)"
+     id="text319"
+     style="font-size:834.752px;fill:#ffffff;stroke-width:69.5628">
+    <path
+       d="m 433.99076,-37.976741 v 67.660563 q 72.14409,21.602469 116.57181,81.111158 44.83531,59.10109 44.83531,138.98947 0,79.88838 -44.83531,138.58188 -44.42772,58.28591 -116.57181,81.51875 v 67.66056 Q 533.85123,512.68242 597.43585,435.23961 661.42807,357.3892 663.05845,249.78445 661.42807,142.1797 597.43585,64.736885 533.85123,-13.113522 433.99076,-37.976741 Z m 81.51875,287.761191 q 0,-44.42772 -22.41766,-79.07319 -22.41766,-34.64547 -59.10109,-53.39478 v 263.30557 q 36.68343,-17.11894 59.10109,-51.76441 22.41766,-34.64547 22.41766,-79.07319 z M 72.455093,151.55436 V 348.01455 H 203.29269 L 367.55297,512.68242 V -13.113522 L 203.29269,151.55436 Z"
+       id="path373"
+       style="fill:#ffffff" />
+  </g>
+</svg>
