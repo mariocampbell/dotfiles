@@ -1,5 +1,4 @@
 #!/bin/bash
-
 API=$(curl https://tgftp.nws.noaa.gov/data/observations/metar/decoded/SANT.TXT)
 TEMPERATURE=$(echo "$API"| grep Temperature | sed -E 's/.*\s\(([[:digit:]][[:digit:]])\sC\)/\1/')
 SKY=$(echo "$API" | grep Sky | sed -E 's/.*:\s(.*)/\1/')
@@ -10,14 +9,26 @@ case "$SKY" in
   "clear") SKY_ICON="<fn=1></fn>";;
 esac
 
-if [ "$TEMPERATURE" -le "13" ]; then
-  echo "<fc=#61aeee><fn=6></fn> $TEMPERATURE°C</fc>"
-  exit 0
-fi
+# getTemperature() {
+#   echo "$(echo "$API"| grep Temperature | sed -E 's/.*\s\(([[:digit:]][[:digit:]])\sC\)/\1/')"
+# }
+# 
+# getSky () {
+#   echo $(echo "$API" | grep Sky | sed -E 's/.*:\s(.*)/\1/')
+# }
 
-if [ "$TEMPERATURE" -ge "28" ]; then
-  echo "<fc=#d19a66><fn=1></fn> $TEMPERATURE°C</fc>"
-  exit 0
-fi
+if [ "$TEMPERATURE" ]; then
 
-echo "<fc=#abb2bf><fn=1></fn> $TEMPERATURE°C</fc>"
+  if [ "$TEMPERATURE" -le "15" ]; then
+    echo "<fc=#61aeee><fn=6></fn> $TEMPERATURE°C</fc>"
+    exit 0
+  fi
+  
+  if [ "$TEMPERATURE" -ge "25" ]; then
+    echo "<fc=#d19a66><fn=1></fn> $TEMPERATURE°C</fc>"
+    exit 0
+  fi
+  
+  echo "<fc=#abb2bf><fn=1></fn> $TEMPERATURE°C</fc>"
+
+fi

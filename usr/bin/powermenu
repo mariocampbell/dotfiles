@@ -5,6 +5,6 @@ choosen=$(printf " Apagar\n⏼ Reiniciar\n Bloquear pantalla" | rofi -dmen
 case "$choosen" in
 	" Apagar") poweroff ;;
 	"⏼ Reiniciar") reboot ;;
-	" Bloquear pantalla") betterlockscreen --lock blur ;;
+	" Bloquear pantalla") betterlockscreen -l;;
 	*) exit 1 ;;
 esac
