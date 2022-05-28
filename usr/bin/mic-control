@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "$1" = "toggle" ]; then
-  mic="$(amixer set Capture toggle | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
-  dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$mic" = "off" ] && echo "-mute").svg -r 100811
-  paplay ~/discord-$([ "$mic" = "on" ] && echo "un")mute-mic.ogg --volume 50000
+  MIC="$(amixer set Capture toggle | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
+  dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$MIC" = "off" ] && echo "-mute").svg -r 100811
+  paplay ~/discord-$([ "$MIC" = "on" ] && echo "un")mute-mic.ogg --volume 50000
   exit 0
 fi
 

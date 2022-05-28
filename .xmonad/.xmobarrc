@@ -114,7 +114,7 @@ Config {
         , Run Com "mic-control" ["status"] "mic" 5
 
         -- weather indicator
-        , Run Com "weather-control" [] "weather" 5
+        , Run Com "weather-control" [] "weather" 3600
 
         -- bluetooth indicator
         , Run Com "bluetooth-control" ["status"] "bluetooth" 5
