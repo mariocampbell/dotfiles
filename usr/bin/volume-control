@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CARD=1
+CARD=0
 
 if [ "$1" = "toggle" ]; then
     pactl set-sink-mute $CARD toggle
