@@ -76,6 +76,7 @@ endif
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'"
   Plug 'APZelos/blamer.nvim'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 
   " Varios
   Plug 'Yggdroot/indentLine'
@@ -102,6 +103,19 @@ call plug#end()
   let NERDTreeShowLineNumbers=1
   " make sure relative line numbers are used
   autocmd FileType nerdtree setlocal relativenumber
+
+  let g:NERDTreeGitStatusIndicatorMapCustom = {
+                  \ 'Modified'  :'✹',
+                  \ 'Staged'    :'✚',
+                  \ 'Untracked' :'✭',
+                  \ 'Renamed'   :'➜',
+                  \ 'Unmerged'  :'═',
+                  \ 'Deleted'   :'✖',
+                  \ 'Dirty'     :'-',
+                  \ 'Ignored'   :'☒',
+                  \ 'Clean'     :'✔︎',
+                  \ 'Unknown'   :'?',
+                  \ }
   
   " Kite
   let g:kite_supported_languages = ['*'] " Python, JavaScript, Go

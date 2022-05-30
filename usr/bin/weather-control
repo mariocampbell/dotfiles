@@ -1,21 +1,8 @@
 #!/bin/bash
 API=$(curl https://tgftp.nws.noaa.gov/data/observations/metar/decoded/SANT.TXT)
-TEMPERATURE=$(echo "$API"| grep Temperature | sed -E 's/.*\s\(([[:digit:]][[:digit:]])\sC\)/\1/')
+TEMPERATURE=$(echo "$API"| grep Temperature | sed -E 's/.*\s\(([[:digit:]][[:digit:]]?)\sC\)/\1/')
 SKY=$(echo "$API" | grep Sky | sed -E 's/.*:\s(.*)/\1/')
 SKY_ICON=""
-
-case "$SKY" in
-  "overcast") SKY_ICON="<fn=1>流</fn>";;
-  "clear") SKY_ICON="<fn=1></fn>";;
-esac
-
-# getTemperature() {
-#   echo "$(echo "$API"| grep Temperature | sed -E 's/.*\s\(([[:digit:]][[:digit:]])\sC\)/\1/')"
-# }
-# 
-# getSky () {
-#   echo $(echo "$API" | grep Sky | sed -E 's/.*:\s(.*)/\1/')
-# }
 
 if [ "$TEMPERATURE" ]; then
 
