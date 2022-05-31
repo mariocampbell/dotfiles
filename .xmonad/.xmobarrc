@@ -14,8 +14,8 @@ Config {
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
    , alpha = 50
-   -- , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
-   , position =     Static { xpos=0, ypos=0, width=1920 , height=20 }
+   , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
+   -- , position =     Static { xpos=0, ypos=0, width=1920 , height=20 }
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
