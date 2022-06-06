@@ -1,0 +1,36 @@
+#!/bin/bash
+SENDING="0"
+TIME="$(calcurse -n | tail -n1 | sed -E 's/.*\[[0-9]{2}.([0-9]{2})\].*/\1/')"
+MESSAGE="$(calcurse -n | tail -n1 | sed -E 's/.*\[00:10\]\s(.*)/\1/')"
+
+# echo "$(calcurse -n)"
+# echo "tiempo $TIME"
+# echo "mensaje $MESSAGE"
+# 
+if [ "$1" = "next" ]; then
+
+  if [ "$MESSAGE" ]; then
+
+    if [ "$TIME" -lt "10" ]; then
+      echo "<fc=#fff><fn=5></fn></fc>"
+      exit 0
+    fi
+
+    if [ "$TIME" = "10" ]; then
+      dunstify "$MESSAGE" -t 1500 -r 100899
+      echo "<fc=#fff><fn=5></fn></fc>"
+      exit 0
+    fi
+
+    if [ "$TIME" -gt "10" ]; then
+      echo "<fn=6> </fn>"
+      exit 0
+    fi
+
+  fi
+
+fi
+
+if [ "$1" = "calendar" ]; then
+  calcurse -a --format-apt " %S (%(duration:%M) min.) -> %m\n" | xargs -0 | sed -e "1d" | rofi -dmenu -p "Hoy"
+fi

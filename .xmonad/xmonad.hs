@@ -245,6 +245,7 @@ myManageHook = composeAll
     , className =? "Gimp"           --> doFloat
     , className =? "discord"        --> doShift ( myWorkspaces !! 9 )
     , className =? "Google-chrome"        --> doShift ( myWorkspaces !! 1 )
+    , className =? "crx_agimnkijcaahngcdmfeangaknmldooml"        --> doShift ( myWorkspaces !! 11 )
     , className =? "Zoho Mail - Desktop"  --> doShift ( myWorkspaces !! 4 )
     , className =? "Whatsapp-for-linux"  --> doShift ( myWorkspaces !! 10 )
     , className =? "Slack"  --> doShift ( myWorkspaces !! 10 )
