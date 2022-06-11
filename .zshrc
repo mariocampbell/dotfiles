@@ -133,3 +133,8 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 export EDITOR=nvim;
 export VISUAL=nvim;
+
+### RANDOM COLOR SCRIPT ###
+colorscript random
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
