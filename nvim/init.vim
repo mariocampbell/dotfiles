@@ -77,6 +77,7 @@ endif
   Plug 'junegunn/gv.vim'"
   Plug 'APZelos/blamer.nvim'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'airblade/vim-gitgutter'
 
   " Varios
   Plug 'Yggdroot/indentLine'
