@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ACTIVE=$(ps -A | grep picom | sed -E 's/.*/yes/g')
+
+echo $ACTIVE
+#if [ !$ACTIVE ]; then
+#  echo "no activo"
+#  exit 0
+#fi
+
+# if [ "$1" = "toggle" ]; then
+#   if [ $ACTIVE ]; then
+#     picom -b --experimental-backends &
+#     exit 0
+#   else
+#     killall picom
+#     exit 0
+#   fi
+# fi
