@@ -1,6 +1,7 @@
 [user]
 	email = mcampbell327@yahoo.com.ar
 	name = Mario Campbell
+
 [alias]
 	co = checkout
 	st = status
@@ -8,25 +9,44 @@
 	br = branch
 	d = diff
 	dn = diff --name-only
+	
 [core]
 	editor = nvim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	light = false
+	side-by-side = true
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
 # diff tool
 [difftool]
 	prompt = true
+
 [diff]
 	tool = nvimdiff
+	colorMoved = default
+
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 # merge tool
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+
 [merge]
 	tool = nvim
+	conflictstyle = diff3
+
 [mergetool]
 	prompt = false
 	keepBackup = false
