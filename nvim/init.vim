@@ -34,6 +34,8 @@ set smartcase " No ignorar mayusculas si la palabra a buscar tiene mayusculas
 set termguicolors " Activa true colors en la terminal
 set background=dark " Fondo del tema: dark o light
 
+set winbar=%f " Muestra el path del archivo en el buffer
+
 " =============================== 
 " PLUGINS
 call plug#begin('~/.config/nvim/plugged')
@@ -62,6 +64,7 @@ endif
   Plug 'chun-yang/auto-pairs'
   Plug 'alvan/vim-closetag'
   Plug 'othree/html5.vim'
+  Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
   "Themes
   Plug 'norcalli/nvim-colorizer.lua'
@@ -96,7 +99,7 @@ call plug#end()
   " Airline
   let g:airline_theme='minimalist'
   let g:airline#extensions#tabline#enabled = 1 " Mostrar las tabs de buffers
-  let g:airline#extensions#tabline#formatter = 'unique_tail'
+  let g:airline#extensions#tabline#formatter = 'unique_tail' " default | jsformatter | unique_tail | unique_tail_improved
   
   " Indent blankline
   let g:indent_blankline_char='|'
@@ -126,10 +129,38 @@ call plug#end()
   let g:kite_supported_languages = ['*'] " Python, JavaScript, Go
   
   " coc
-  autocmd FileType javascript let b:coc_suggest_disable=1
+  autocmd FileType javascript let b:coc_suggest_disable=0
   autocmd FileType scss setl iskeyword+=@-@
 
   let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint', 'coc-json']
+  "inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : \<C-g>u\<TAB>"
+  " Use tab for trigger completion with characters ahead and navigate.
+  " NOTE: There's always complete item selected by default, you may want to enable
+  " no select by `"suggest.noselect": true` in your configuration file.
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config.
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice.
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
   "coc-config
   "{
@@ -225,4 +256,4 @@ colorscheme onedark
   let g:lazygit_floating_window_corner_chars = ['?', '?', '?', '?'] " customize lazygit popup window corner characters
   let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
   let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
- " ===============================
+ " =============================== 
