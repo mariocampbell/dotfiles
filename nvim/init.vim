@@ -34,6 +34,8 @@ set smartcase " No ignorar mayusculas si la palabra a buscar tiene mayusculas
 set termguicolors " Activa true colors en la terminal
 set background=dark " Fondo del tema: dark o light
 
+set winbar=%f " Muestra el path del archivo en el buffer
+
 " =============================== 
 " PLUGINS
 call plug#begin('~/.config/nvim/plugged')
@@ -61,23 +63,30 @@ endif
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'chun-yang/auto-pairs'
   Plug 'alvan/vim-closetag'
+  Plug 'othree/html5.vim'
+  Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
   "Themes
-  "Plug 'romgrk/doom-one.vim'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'navarasu/onedark.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'frazrepo/vim-rainbow'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  Plug 'sakshamgupta05/vim-todo-highlight'
   " Git
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'"
   Plug 'APZelos/blamer.nvim'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'kdheepak/lazygit.nvim'
 
   " Varios
+  " Plug 'itchyny/vim-cursorword'
+  Plug 'dominikduda/vim_current_word'
+  Plug 'karb94/neoscroll.nvim'
   Plug 'Yggdroot/indentLine'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -90,7 +99,7 @@ call plug#end()
   " Airline
   let g:airline_theme='minimalist'
   let g:airline#extensions#tabline#enabled = 1 " Mostrar las tabs de buffers
-  let g:airline#extensions#tabline#formatter = 'unique_tail'
+  let g:airline#extensions#tabline#formatter = 'unique_tail' " default | jsformatter | unique_tail | unique_tail_improved
   
   " Indent blankline
   let g:indent_blankline_char='|'
@@ -102,6 +111,19 @@ call plug#end()
   let NERDTreeShowLineNumbers=1
   " make sure relative line numbers are used
   autocmd FileType nerdtree setlocal relativenumber
+
+  let g:NERDTreeGitStatusIndicatorMapCustom = {
+                  \ 'Modified'  :'✹',
+                  \ 'Staged'    :'✚',
+                  \ 'Untracked' :'✭',
+                  \ 'Renamed'   :'➜',
+                  \ 'Unmerged'  :'═',
+                  \ 'Deleted'   :'✖',
+                  \ 'Dirty'     :'-',
+                  \ 'Ignored'   :'☒',
+                  \ 'Clean'     :'✔︎',
+                  \ 'Unknown'   :'?',
+                  \ }
   
   " Kite
   let g:kite_supported_languages = ['*'] " Python, JavaScript, Go
@@ -110,7 +132,35 @@ call plug#end()
   autocmd FileType javascript let b:coc_suggest_disable=0
   autocmd FileType scss setl iskeyword+=@-@
 
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint', 'coc-json']
+  "inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : \<C-g>u\<TAB>"
+  " Use tab for trigger completion with characters ahead and navigate.
+  " NOTE: There's always complete item selected by default, you may want to enable
+  " no select by `"suggest.noselect": true` in your configuration file.
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config.
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice.
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
   "coc-config
   "{
@@ -126,15 +176,27 @@ call plug#end()
   let g:ColorizerAttachToBuffer = 1
   let g:ColorizerToggle = 1
 
-  colorscheme onedark
-
-  " theme doom_one
-  "let g:doom_one_terminal_colors = v:true
-  
   " theme onedark
-  let g:onedark_style = 'cool' " darker | cool | deep | warm | warmer
-  let g:onedark_transparent_background = 1 " By default it is 0
-  let g:onedark_italic_comment = 1 " By default it is 1
+let g:onedark_config = {
+  \ 'style': 'cool',
+  \ 'ending_tildes': v:true,
+  \ 'italic': {
+    \ 'comment': v:true
+    \ },
+  \ 'transparent': {
+    \ 'background': v:true
+    \ },
+  \ 'diagnostics': {
+    \ 'darker': v:true,
+    \ 'background': v:true,
+  \ },
+\ }
+colorscheme onedark
+
+  " let g:onedark_style = 'cool' " darker | cool | deep | warm | warmer
+  " let g:onedark_transparent_background = 1 " By default it is 0
+  " let g:onedark_italic_comment = 1 " By default it is 1
+  " let g:onedark_diagnostics_darker = 1
   
   let g:onedark_hide_endofbuffer=1
   let g:onedark_termcolors=256
@@ -150,6 +212,9 @@ call plug#end()
   
   " nerdtree
   nmap <Leader>nt :NERDTreeFind<CR>
+
+  "lazigit
+  nmap <Leader>lg :LazyGit<CR>
   
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
@@ -159,4 +224,36 @@ call plug#end()
 
   " atajos de vim
   nnoremap <esc><esc> :noh<return><esc>
+
+  " highlight search config
+  hi Search guifg=#cce7f4 guibg=#0088CC
+  
+  " Neovide configs
+  if exists("g:neovide")
+    let g:neovide_transparency=0.96
+    let g:neovide_hide_mouse_when_typing = v:true
+    let g:neovide_floating_blur_amount_x=5.0
+    let g:neovide_floating_blur_amount_y=5.0
+    let g:neovide_floating_opacity=0.8
+    " let g:neovide_fullscreen=v:false
+    let g:neovide_input_use_logo=v:true  " v:true on macOS
+  endif
+
+  " Vim current word
+  hi CurrentWord gui=underline
+  hi CurrentWordTwins guibg=#444444
+
+  " Twins of word under cursor:
+  let g:vim_current_word#highlight_twins = 1
+  " The word under cursor:
+  let g:vim_current_word#highlight_current_word = 1
+
+  let g:vim_current_word#highlight_only_in_focused_window = 0
+
+  " Lazygit 
+  let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+  let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
+  let g:lazygit_floating_window_corner_chars = ['?', '?', '?', '?'] " customize lazygit popup window corner characters
+  let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+  let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
  " =============================== 
