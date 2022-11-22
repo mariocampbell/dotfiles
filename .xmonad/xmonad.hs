@@ -286,7 +286,7 @@ myStartupHook = do
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     -- spawnOnce "picom -b --experimental-backends &"
     spawnOnce "picom -b &"
-    spawnOnce "feh --bg-fill ~/ninja-wallpaper.jpg"
+    spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
