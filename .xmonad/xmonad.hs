@@ -285,7 +285,7 @@ myStartupHook = do
     spawnOnce "xrandr --output LVDS-1 --mode 1366x768 --pos 0x0 --rotate normal --output VGA-1 --off --output HDMI-1 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "picom -b &"
-    spawnOnce "feh --bg-fill ~/ninja-wallpaper.jpg"
+    spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
