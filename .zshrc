@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v=openNvim
 alias lg=lazygit
+alias x=exit
 
 function openNvim {
   if [ $# -eq 0 ]; then
@@ -123,3 +124,5 @@ function openNvim {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+### RANDOM COLOR SCRIPT ###
+colorscript random
