@@ -109,6 +109,10 @@ source $ZSH/oh-my-zsh.sh
 alias v=openNvim
 alias lg=lazygit
 alias x=exit
+alias ls=exa
+alias la="exa -la"
+alias tm=tmux
+alias cl=clear
 
 function openNvim {
   if [ $# -eq 0 ]; then

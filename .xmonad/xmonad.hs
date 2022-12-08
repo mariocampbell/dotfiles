@@ -27,7 +27,7 @@ import XMonad.Actions.SpawnOn
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "tilix -e tmux"
+myTerminal      = "tabby"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
