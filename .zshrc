@@ -109,7 +109,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lg=lazygit
 alias v=openNvim
-
+alias x=exit
+alias ls=exa
+alias la="exa -la"
 function openNvim {
   if [ $# -eq 0 ]; then
     nvim ./
