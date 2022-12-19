@@ -112,6 +112,7 @@ alias v=openNvim
 alias x=exit
 alias ls=exa
 alias la="exa -la"
+alias tm=tmux
 function openNvim {
   if [ $# -eq 0 ]; then
     nvim ./
