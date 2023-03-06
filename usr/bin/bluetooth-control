@@ -3,7 +3,7 @@ STATUS=$(bluetoothctl show | grep Powered | sed -E 's/.*(yes)/\1/')
 
 if [ "$1" = "status" ]; then
   if [ "$STATUS" = "yes" ]; then
-    echo "<fn=6></fn>"
+    echo "<fn=4></fn>"
   else
     echo "<fc=#e06c75><fn=6></fn></fc>"
   fi

@@ -13,7 +13,7 @@ if [ "$1" = "status" ]; then
     echo "<fc=#e06c75><fn=5></fn></fc>"
     exit 0
   else
-    echo "<fn=6></fn>"
+    echo "<fn=4></fn>"
     exit 0
   fi
 fi
