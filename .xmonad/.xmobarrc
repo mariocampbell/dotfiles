@@ -1,21 +1,19 @@
 Config { 
    -- appearance
-     -- font =         "xft:Bitstream Vera Sans Mono:size=9:style=Regular:antialias=true"
-     font =         "xft:Roboto:size=9:style=Medium:antialias=true"
+     font = "Roboto Medium 10"
    , additionalFonts = [
-      "xft:JetBrainsMono Nerd Font Mono:size=18:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=26:style=Regular:antialias=true"
-      , "xft:Roboto:size=10:style=Medium:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=9:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=14:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=12:style=Regular:antialias=true"
-      , "xft:JetBrainsMono Nerd Font Mono:size=11:style=Regular:antialias=true"
+        "JetBrainsMono Nerd Font Mono Regular 16"
+      , "JetBrainsMono Nerd Font Mono Regular 26"
+      , "Roboto Bold 11"
+      , "JetBrainsMono Nerd Font Mono Regular 12"
+      , "JetBrainsMono Nerd Font Mono Regular 15"
+      , "JetBrainsMono Nerd Font Mono Regular 11"
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
    , alpha = 50
    -- , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
-   , position =     Static { xpos=0, ypos=0, width=1366 , height=20 }
+   , position =     Static { xpos=0, ypos=0, width=1366 , height=24 }
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
