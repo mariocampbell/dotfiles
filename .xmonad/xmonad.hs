@@ -73,7 +73,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- muted microphone
-    , ((controlMask .|. shiftMask, xK_m), spawn "mic-control toggle")
+    -- , ((controlMask .|. shiftMask, xK_m), spawn "mic-control toggle")
+    , ((controlMask .|. shiftMask, xK_m), spawn "~/dotfiles/usr/bin/mic-control-js.mjs --toggle")
 
     -- launch powermenu
     , ((modm,               xK_x     ), spawn "powermenu")
@@ -82,7 +83,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
     -- launch change keyboard languaje
-    , ((controlMask .|. shiftMask, xK_i), spawn "changekeyboard")
+    , ((controlMask .|. shiftMask, xK_i), spawn "~/dotfiles/usr/bin/change-keyboard-js.mjs")
 
     -- launch xscreensaver
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen -l")
@@ -282,7 +283,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
     spawnOnce "xmobar &"
-    spawnOnce "xrandr --output LVDS-1 --mode 1366x768 --pos 0x0 --rotate normal --output VGA-1 --off --output HDMI-1 --off --output DP-1 --off"
+    spawnOnce "xrandr --output LVDS-1 --mode 1366x768 --pos 0x0 --rotate normal --output VGA-1 --off --output HDMI-1 --mode 1920x1080 --pos 1366x0 --rotate normal --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "picom -b &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"

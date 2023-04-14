@@ -1,25 +1,25 @@
 Config { 
    -- appearance
-     font = "Roboto Medium 10"
+     font = "Roboto Medium 11"
    , additionalFonts = [
-        "JetBrainsMono Nerd Font Mono Regular 16"
-      , "JetBrainsMono Nerd Font Mono Regular 26"
-      , "Roboto Bold 11"
-      , "JetBrainsMono Nerd Font Mono Regular 12"
-      , "JetBrainsMono Nerd Font Mono Regular 15"
-      , "JetBrainsMono Nerd Font Mono Regular 11"
+        "JetBrainsMono Nerd Font Mono Regular 18"
+      , "JetBrainsMono Nerd Font Mono Regular 28"
+      , "Roboto Bold 12"
+      , "JetBrainsMono Nerd Font Mono Regular 14"
+      , "JetBrainsMono Nerd Font Mono Regular 17"
+      , "JetBrainsMono Nerd Font Mono Regular 13"
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
-   , alpha = 50
+   , alpha = 100
    -- , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
-   , position =     Static { xpos=0, ypos=0, width=1366 , height=24 }
+   , position =     Static { xpos=1366, ypos=0, width=1920 , height=26 }
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader%} <action=`tilix -e calcurse` button=1><action=`gnome-calendar` button=3><fc=#ffffff><fn=3>%myDate%</fn></fc></action></action> {%wlp2s0wi%     %default:Master%     %battery%    <action='changekeyboard'>%kbd%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=1></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    %weather%    "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>   %StdinReader%} <action=`tilix -e calcurse` button=1><action=`gnome-calendar` button=3><fc=#ffffff><fn=3>%myDate%</fn></fc></action></action> {%wlp2s0wi%     %default:Master%     %battery%    <action='changekeyboard'>%kbd%</action>    <action=`~/dotfiles/usr/bin/mic-control-js.mjs --toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=1></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    %weather%    "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -109,6 +109,7 @@ Config {
                                         ] 5
 
         -- mic-control indicator
+        -- , Run Com "~/dotfiles/usr/bin/mic-control-status-js.mjs" [] "mic" 5
         , Run Com "mic-control" ["status"] "mic" 5
 
         -- weather indicator
