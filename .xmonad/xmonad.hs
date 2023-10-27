@@ -27,7 +27,7 @@ import XMonad.Actions.SpawnOn
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "tabby"
+myTerminal      = "tilix"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -282,7 +282,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
     spawnOnce "xmobar &"
-    spawnOnce "xrandr --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
+    spawnOnce "xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     -- spawnOnce "picom -b --experimental-backends &"
     spawnOnce "picom -b &"
