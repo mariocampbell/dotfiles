@@ -22,7 +22,7 @@ set shiftwidth=2
 set softtabstop=2
 set shiftround
 set expandtab " Insertar espacios en lugar de tabs
-set foldmethod=indent
+set foldmethod=syntax "indent
 
 set hidden " Permitir cambiar de buffers sin tener que guardarlos
 
@@ -90,6 +90,7 @@ endif
   Plug 'Yggdroot/indentLine'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'wuelnerdotexe/vim-astro'
 
 call plug#end()
 " =============================== 
@@ -184,7 +185,7 @@ let g:onedark_config = {
     \ 'comment': v:true
     \ },
   \ 'transparent': {
-    \ 'background': v:true
+    \ 'background': v:false
     \ },
   \ 'diagnostics': {
     \ 'darker': v:true,
@@ -201,6 +202,10 @@ colorscheme onedark
   let g:onedark_hide_endofbuffer=1
   let g:onedark_termcolors=256
   let g:onedark_terminal_italics=1
+
+  " Astro
+  let g:astro_typescript = 'enable'
+  let g:astro_stylus = 'enable'
 
   "blamer (gitlens)
   let g:blamer_enabled = 0

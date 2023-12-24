@@ -19,15 +19,18 @@ import XMonad.Layout.NoBorders
 
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
+import System.IO
 
 import XMonad.Actions.SpawnOn
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "tilix"
+myTerminal      = "tilix -e tmux"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -61,7 +64,7 @@ myWorkspaces    = map show [1..12]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
+myNormalBorderColor  = "#444444"
 myFocusedBorderColor = "#0088CC"
 
 ------------------------------------------------------------------------
@@ -286,8 +289,7 @@ myStartupHook = do
     spawnOnce "xmobar &"
     spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
-    -- spawnOnce "picom -b --experimental-backends &"
-    spawnOnce "picom -b &"
+    spawnOnce "compfy &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
 

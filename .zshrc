@@ -141,3 +141,5 @@ export NVM_DIR="$HOME/.nvm"
 
 ### RANDOM COLOR SCRIPT ###
 colorscript random
+
+export PATH=$PATH:$HOME/.config/emacs/bin
