@@ -42,7 +42,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 3
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -151,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "xmonad --recompile && xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -206,8 +206,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = 
-    spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True (tiled ||| Mirror tiled) ||| fullscreen
+myLayout = avoidStruts $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True (tiled ||| Mirror tiled) ||| fullscreen
 
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -273,9 +272,9 @@ myEventHook = mempty
 
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
 
-myLogHook = return ()
+myLogHook :: Handle -> Handle -> X ()
+myLogHook xmobarProc0 xmobarProc1 = dynamicLogWithPP myPP { ppOutput = \x -> hPutStrLn xmobarProc0 x >> hPutStrLn xmobarProc1 x }
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -286,7 +285,6 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "xmobar &"
     spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "compfy &"
@@ -295,7 +293,7 @@ myStartupHook = do
 
 ------------------------------------------------------------------------
 -- Command to launch the bar
-myBar = "LANG=es_AR.utf-8 xmobar" 
+myBar = "LANG=es_AR.utf-8 xmobar -x 0 ~/dotfiles/xmobar/xmobarrc0" 
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar
 myPP = xmobarPP { 
@@ -320,7 +318,12 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
+-- main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
+main :: IO ()
+main = do
+    xmobarProc0 <- spawnPipe "xmobar -x 0 ~/dotfiles/xmobar/xmobarrc0"
+    xmobarProc1 <- spawnPipe "xmobar -x 1 ~/dotfiles/xmobar/xmobarrc1"
+    xmonad $ docks $ defaults { logHook = dynamicLogWithPP myPP { ppOutput = \x -> hPutStrLn xmobarProc0 x >> hPutStrLn xmobarProc1 x } }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -344,10 +347,9 @@ defaults = def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = myLayout,
+        layoutHook         = avoidStruts $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
         startupHook        = myStartupHook
                }
     -- para conocer el nombre de la tecla multimedia "xev"

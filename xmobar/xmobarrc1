@@ -26,9 +26,8 @@ Config {
    ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
-   , alpha = 50
-   -- , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
-   , position = TopSize C 100 25
+   , alpha = 100
+   , position = TopHM 30 10 10 5 0
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
 
    -- layout
@@ -37,7 +36,7 @@ Config {
    , template = "    <fn=2><fc=#abb2bf></fc></fn>  %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action='changekeyboard'>%kbd%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    %multicoretemp%   %weather%      "
      
    -- general behavior
-   , lowerOnStart =     False    -- send to bottom of window stack on start
+   , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
@@ -140,3 +139,5 @@ Config {
 
         ]
    }
+
+

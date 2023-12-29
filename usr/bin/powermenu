@@ -1,10 +1,11 @@
 #! /bin/sh
 
-choosen=$(printf " Apagar\n⏼ Reiniciar\n Bloquear pantalla" | rofi -dmenu -i -theme-str)
+choosen=$(printf " Apagar\n⏼ Reiniciar\n⏼ Suspender\n Bloquear pantalla" | rofi -dmenu -i -theme-str)
 
 case "$choosen" in
 	" Apagar") poweroff ;;
 	"⏼ Reiniciar") reboot ;;
-	" Bloquear pantalla") betterlockscreen -l;;
+	"⏼ Suspender") systemctl suspend ;;
+	" Bloquear pantalla") betterlockscreen -l ;;
 	*) exit 1 ;;
 esac
