@@ -1,0 +1,8 @@
+#!/bin/sh
+CURRENT_MONITOR=$(autorandr --current)
+
+if [ "$CURRENT_MONITOR" = "two-monitors" ]; then
+  autorandr --load "one-monitor"
+else
+  autorandr --load "two-monitors"
+fi

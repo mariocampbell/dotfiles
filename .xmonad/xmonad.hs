@@ -91,7 +91,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen -l")
 
     -- launch calculator
-    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show calc")
+    -- , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show calc")
+    , ((modm .|. shiftMask, xK_p     ), spawn "changemonitors")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -287,6 +288,7 @@ myLogHook xmobarProc0 xmobarProc1 = dynamicLogWithPP myPP { ppOutput = \x -> hPu
 --
 -- By default, do nothing.
 myStartupHook = do
+    spawnOnce "autorandr --change"
     spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "compfy &"
