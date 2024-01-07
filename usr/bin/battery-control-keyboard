@@ -1,0 +1,7 @@
+#!/bin/bash
+
+BATTERY="$(upower --dump | grep -ie 'keyboard' -A 5 | tail -n1 | sed 's/.*\(.\{4\}\)$/\1/' | tr -s ' ' | sed 's/\s//')"
+
+if [ "$BATTERY" ]; then
+  echo "($BATTERY)"
+fi
