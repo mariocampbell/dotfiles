@@ -226,6 +226,9 @@ colorscheme onedark
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> sd <Plug>(coc-documentation)
+
+  nnoremap <silent>K :call CocActionAsync('doHover')<CR>
 
   " atajos de vim
   nnoremap <esc><esc> :noh<return><esc>

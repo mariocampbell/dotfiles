@@ -1,3 +1,28 @@
 {
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "scss",
+    "css"
+  ],
+  "prettier.enable": true,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+  "prettier.bracketSameLine": false,
+  "prettier.printWidth": 120,
+  "prettier.quoteProps": "as-needed",
+  "prettier.semi": true,
+  "prettier.jsxSingleQuote": false,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.useTabs": false,
+  "prettier.eslintIntegration": true,
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "tailwindCSS.headwind.runOnSave": true
 }
