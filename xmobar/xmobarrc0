@@ -31,7 +31,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>  %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action='changekeyboard'>%kbd%</action> %battery-keyboard%    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>      "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>  %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action=`keyboard-control.mjs --change`>%keyboard-control%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>      "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -83,8 +83,8 @@ Config {
         -- cpu core temperature monitor
         , Run MultiCoreTemp ["-t", " <avg>°C", "-hwmonitor-path", "/sys/module/k10temp/drivers/pci:k10temp/0000:00:18.3/hwmon/hwmon2"] 50
 
-        -- battery keyboard
-        , Run Com "battery-keyboard" [""] "battery-keyboard" 5
+        -- keyboard
+        , Run Com "keyboard-control.mjs" ["--xmobar"] "keyboard-control" 5
 
         -- battery monitor
         , Run Battery        [ "--template" , "<acstatus>"
@@ -112,11 +112,6 @@ Config {
         , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
         , Run Com "date" ["+%A, %d de %b - %H:%M"] "myDate" 50
 
-        -- keyboard layout indicator
-        , Run Kbd            [ ("es" , "<fc=#e06c75><fn=6></fn> ES</fc>")
-                             , ("us" , "<fn=6></fn> US")
-                             ]
-      
         -- volume indicator
          , Run Volume "default" "Master" ["-t", "<action=`volume-control toggle` button=1><action=`pavucontrol` button=2><action=`tilix -e pulsemixer` button=3><action=`volume-control up` button=4><action=`volume-control down` button=5><status></action></action></action></action></action>"
                                          , "--"

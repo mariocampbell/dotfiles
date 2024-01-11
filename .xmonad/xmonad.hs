@@ -85,7 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "rofi -show drun -modi drun -show-icons")
 
     -- launch change keyboard languaje
-    , ((controlMask .|. shiftMask, xK_i), spawn "changekeyboard")
+    , ((controlMask .|. shiftMask, xK_i), spawn "keyboard-control.mjs --change")
 
     -- launch xscreensaver
     , ((modm .|. controlMask, xK_l), spawn "betterlockscreen -l")
