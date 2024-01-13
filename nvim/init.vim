@@ -65,6 +65,7 @@ endif
   Plug 'alvan/vim-closetag'
   Plug 'othree/html5.vim'
   Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+  Plug 'gptlang/CopilotChat.nvim'
 
   "Themes
   Plug 'norcalli/nvim-colorizer.lua'
@@ -125,9 +126,6 @@ call plug#end()
                   \ 'Clean'     :'✔︎',
                   \ 'Unknown'   :'?',
                   \ }
-  
-  " Kite
-  let g:kite_supported_languages = ['*'] " Python, JavaScript, Go
   
   " coc
   autocmd FileType javascript let b:coc_suggest_disable=0
