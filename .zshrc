@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lg=lazygit
-alias v=openNvim
+alias v=nvim
 alias x=exit
 alias ls=exa
 alias la="exa -la"
