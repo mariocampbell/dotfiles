@@ -65,6 +65,7 @@ endif
   Plug 'alvan/vim-closetag'
   Plug 'othree/html5.vim'
   Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   "Themes
   Plug 'norcalli/nvim-colorizer.lua'
@@ -257,3 +258,12 @@ colorscheme onedark
   let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
   let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
  " =============================== 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "glimmer", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF

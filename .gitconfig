@@ -1,5 +1,6 @@
 [user]
-	email = mcampbell327@yahoo.com.ar
+  #email = mcampbell327@yahoo.com.ar
+  email = hector.campbell@mercadolibre.com
 	name = Mario Campbell
 [alias]
 	co = checkout
@@ -10,6 +11,9 @@
 	dn = diff --name-only
 [core]
 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -20,6 +24,7 @@
 	prompt = true
 [diff]
 	tool = nvimdiff
+	colorMoved = default
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 # merge tool
@@ -27,6 +32,28 @@
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [merge]
 	tool = nvim
+	conflictstyle = diff3
 [mergetool]
 	prompt = false
 	keepBackup = false
+[delta]
+	# plus-style = "syntax #012800"
+	# minus-style = "syntax #340001"
+	# plus-emph-style = "syntax bold #003800"
+	# minus-emph-style = "syntax bold #320001"
+	theme = "Dracula"
+	true-color = "always"
+	navigate = true
+	light = false
+	side-by-side = true
+	line-numbers = true
+	# line-numbers-left-format = "│ "
+	# line-numbers-right-format = " │"
+	# side-by-side-qual = 50
+	side-by-side-color = 256
+	# side-by-side-width = 192
+	# side-by-side-left-width = 96
+	# side-by-side-right-width = 96
+	# side-by-side-left-color = 255
+	# side-by-side-right-color = 255
+	# side-by-side-pattern =
