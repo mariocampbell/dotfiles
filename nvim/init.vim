@@ -15,6 +15,8 @@ set nocp
 filetype plugin on
 " set path+=** " Agregar la carpeta actual a find
 " set wildignore+=**/node_module/** " ignora node_module al buscar
+" ocultar la linea de comandos mientras no se la usa
+" set cmdheight=0
 
 " Identacion a 2 espacios
 set tabstop=2
