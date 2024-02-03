@@ -1,29 +1,28 @@
 Config { 
-   -- appearance
-     font = "Roboto Medium 11"
-   , additionalFonts = [
-   	-- volume keyboard camera weather
-        "JetBrainsMono Nerd Font Mono Regular 14"
+  -- appearance
+  font = "Roboto Medium 10"
+  , additionalFonts = [
+    -- volume keyboard camera weather
+    "JetBrainsMono Nerd Font Mono Regular 12"
 
-	-- arch logo
-      , "JetBrainsMono Nerd Font Mono Regular 22"
+    -- arch logo
+    , "JetBrainsMono Nerd Font Mono Regular 14"
 
-	-- date
-      , "Roboto Bold 11"
+    -- date
+    , "Roboto Bold 10"
 
-      	-- microphone bluetooth
-      , "JetBrainsMono Nerd Font Mono Regular 11"
+    -- microphone bluetooth
+    , "JetBrainsMono Nerd Font Mono Regular 9"
 
-      	-- not-mic 
-      , "JetBrainsMono Nerd Font Mono Regular 15"
+    -- not-mic 
+    , "JetBrainsMono Nerd Font Mono Regular 12"
 
-	-- not-bluetooth
-      , "JetBrainsMono Nerd Font Mono Regular 10"
-      
-   	-- camera
-      ,"JetBrainsMono Nerd Font Mono Regular 12"
+    -- not-bluetooth camera
+    , "JetBrainsMono Nerd Font Mono Regular 8"
 
-   ]
+    -- camera
+    -- ,"JetBrainsMono Nerd Font Mono Regular 4"
+  ]
    , bgColor =      "#000000"
    , position = TopHM 30 10 10 5 0
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
@@ -31,7 +30,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>  %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action=`keyboard-control.mjs --change`>%keyboard-control%%keyboard-battery%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    <action=`changemonitors` button=1><fn=1>󰍹</fn></action>    %multicoretemp%   %weather%      "
+   , template = "    <fn=2><fc=#abb2bf></fc></fn>     %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action=`keyboard-control.mjs --change`>%keyboard-control%%keyboard-battery%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    <action=`changemonitors` button=1><fn=4>󰍹</fn></action>  %multicoretemp%   %weather%      "
      
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -81,7 +80,7 @@ Config {
         , Run StdinReader
 
         -- cpu core temperature monitor
-        , Run MultiCoreTemp ["-t", " <avg>°C", "-hwmonitor-path", "/sys/module/k10temp/drivers/pci:k10temp/0000:00:18.3/hwmon/hwmon2"] 50
+        , Run MultiCoreTemp ["-t", "  <avg>°C", "-hwmonitor-path", "/sys/module/k10temp/drivers/pci:k10temp/0000:00:18.3/hwmon/hwmon2"] 50
 
         -- keyboard control
         , Run Com "keyboard-control.mjs" ["--xmobar"] "keyboard-control" 5
