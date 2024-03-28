@@ -1,18 +1,18 @@
 Config { 
   -- appearance
- font = "Roboto Medium 10"
+ font = "Roboto Medium 11"
 , additionalFonts = [
   -- volume keyboard camera weather
-  "JetBrainsMono Nerd Font Mono Regular 12"
+  "JetBrainsMono Nerd Font Mono Regular 14"
 
   -- arch logo
   , "JetBrainsMono Nerd Font Mono Regular 14"
 
   -- date
-  , "Roboto Bold 10"
+  , "Roboto Bold 11"
 
   -- microphone bluetooth
-  , "JetBrainsMono Nerd Font Mono Regular 9"
+  , "JetBrainsMono Nerd Font Mono Regular 10"
 
   -- not-mic 
   , "JetBrainsMono Nerd Font Mono Regular 12"
@@ -20,7 +20,7 @@ Config {
   -- not-bluetooth camera
   , "JetBrainsMono Nerd Font Mono Regular 8"
 
-  -- camera
+  -- ?
   -- ,"JetBrainsMono Nerd Font Mono Regular 4"
 ]
    , bgColor =      "#000000"

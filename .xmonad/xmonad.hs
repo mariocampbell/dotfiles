@@ -176,7 +176,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        | (key, sc) <- zip [ xK_e, xK_w, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
@@ -288,8 +288,8 @@ myLogHook xmobarProc0 xmobarProc1 = dynamicLogWithPP myPP { ppOutput = \x -> hPu
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "autorandr --change"
-    spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
+    -- spawnOnce "autorandr --change"
+    -- spawnOnce "xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "compfy &"
     spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
@@ -361,7 +361,7 @@ defaults = def {
                 ((0                     , 0x1008FF11), spawn "volume-control down")
               , ((0                     , 0x1008FF13), spawn "volume-control up")
               , ((0                     , 0x1008FF12), spawn "volume-control toggle")
-              , ((0                     , 0x1008FF31), spawn "mic-control toggle")
+              -- , ((0                     , 0x1008FF31), spawn "mic-control toggle")
               , ((0                     , 0x1008FF02), spawn "xbacklight -inc 10")
               , ((0                     , 0x1008FF03), spawn "xbacklight -dec 10")
             -- ((0, xF86XK_AudioMute        ), spawn ("pkill -u $USER osd_cat; amixer -D pulse set Master toggle | awk '/Front Right:/ { print $6; }' | " ++ osd_cat_command ))

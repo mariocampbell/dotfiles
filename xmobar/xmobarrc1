@@ -1,28 +1,28 @@
 Config { 
   -- appearance
-  font = "Roboto Medium 10"
-  , additionalFonts = [
-    -- volume keyboard camera weather
-    "JetBrainsMono Nerd Font Mono Regular 12"
+ font = "Roboto Medium 11"
+, additionalFonts = [
+  -- volume keyboard camera weather
+  "JetBrainsMono Nerd Font Mono Regular 14"
 
-    -- arch logo
-    , "JetBrainsMono Nerd Font Mono Regular 14"
+  -- arch logo
+  , "JetBrainsMono Nerd Font Mono Regular 14"
 
-    -- date
-    , "Roboto Bold 10"
+  -- date
+  , "Roboto Bold 11"
 
-    -- microphone bluetooth
-    , "JetBrainsMono Nerd Font Mono Regular 9"
+  -- microphone bluetooth
+  , "JetBrainsMono Nerd Font Mono Regular 10"
 
-    -- not-mic 
-    , "JetBrainsMono Nerd Font Mono Regular 12"
+  -- not-mic 
+  , "JetBrainsMono Nerd Font Mono Regular 12"
 
-    -- not-bluetooth camera
-    , "JetBrainsMono Nerd Font Mono Regular 8"
+  -- not-bluetooth camera
+  , "JetBrainsMono Nerd Font Mono Regular 8"
 
-    -- camera
-    -- ,"JetBrainsMono Nerd Font Mono Regular 4"
-  ]
+  -- ?
+  -- ,"JetBrainsMono Nerd Font Mono Regular 4"
+]
    , bgColor =      "#000000"
    , position = TopHM 30 10 10 5 0
    , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
