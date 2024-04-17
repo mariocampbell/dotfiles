@@ -143,3 +143,31 @@ export NVM_DIR="$HOME/.nvm"
 colorscript random
 
 export PATH=$PATH:$HOME/.config/emacs/bin
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
+# https://github.com/sharkdp/fd
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude .git . "$1"
+}
+
+source ~/fzf-git.sh/fzf-git.sh
+
+# Redefine this function to change the options
+_fzf_git_fzf() {
+  fzf-tmux -p80%,60% -- \
+    --layout=reverse --multi --height=50% --min-height=20 --border \
+    --border-label-pos=2 \
+    --color='header:italic:underline,label:blue' \
+    --preview-window='right,50%,border-left' \
+    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' "$@"
+}
