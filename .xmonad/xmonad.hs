@@ -30,7 +30,7 @@ import XMonad.Actions.SpawnOn
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "kitty -e tmux"
+myTerminal      = "tilix -e tmux"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -291,8 +291,8 @@ myStartupHook = do
     -- spawnOnce "autorandr --change"
     -- spawnOnce "xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
-    spawnOnce "compfy &"
-    spawnOnce "feh --bg-fill ~/wallpaperNinja.jpg"
+    spawnOnce "picom &"
+    spawnOnce "feh --bg-fill ~/wallpaper.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
 
 ------------------------------------------------------------------------
