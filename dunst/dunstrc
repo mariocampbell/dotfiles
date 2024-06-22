@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 20x28
+    offset = 10x45
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -300,13 +300,13 @@
     # Icon for notifications with low urgency, uncomment to enable
     #new_icon = /path/to/icon
 
-[urgency_normal]
-    #background = "#282C34"
-    background = "#0088CC"
-    foreground = "#ffffff"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
-    new_icon = ~/dotfiles/icons/fontawesome/bell-solid.svg
+# [urgency_normal]
+#     #background = "#282C34"
+#     background = "#0088CC"
+#     foreground = "#ffffff"
+#     timeout = 10
+#     # Icon for notifications with normal urgency, uncomment to enable
+#     new_icon = ~/dotfiles/icons/fontawesome/bell-solid.svg
 
 [urgency_critical]
     background = "#282C34"

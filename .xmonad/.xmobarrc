@@ -1,47 +1,43 @@
 Config { 
+
    -- appearance
-     font = "Roboto Medium 11"
-   , additionalFonts = [
-   	-- volume keyboard camera weather
-        "JetBrainsMono Nerd Font Mono Regular 14"
+     font =         "Bitstream Vera Sans Mono Bold 10"
+     , additionalFonts = [
+     -- arch logo
+     "Bitstream Vera Sans Mono Bold 14"
 
-	-- arch logo
-      , "JetBrainsMono Nerd Font Mono Regular 22"
-
-	-- date
-      , "Roboto Bold 11"
-
-      	-- microphone bluetooth
-      , "JetBrainsMono Nerd Font Mono Regular 11"
-
-      	-- not-mic 
-      , "JetBrainsMono Nerd Font Mono Regular 15"
-
-	-- not-bluetooth
-      , "JetBrainsMono Nerd Font Mono Regular 10"
-      
-   	-- camera
-      ,"JetBrainsMono Nerd Font Mono Regular 12"
-
-   ]
+     -- date
+       , "Roboto Bold 11"
+     ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
-   , alpha = 50
-   -- , position =     Static { xpos=0, ypos=0, width=1600, height=20 }
-   , position = TopSize C 100 25
-   , iconRoot = "/home/mcmpbll783/.xmonad/xpm/" -- default: "."
+   , alpha = 100
+   , position = TopHM 30 10 10 5 0
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "    <fn=2><fc=#abb2bf></fc></fn>  %StdinReader%} <action='gnome-calendar'><fc=#ffffff><fn=3>%myDate%</fn></fc></action> {%default:Master%    <action='changekeyboard'>%kbd%</action>    <action=`mic-control toggle` button=1>%mic%</action>    <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>    <action=`rofi-bluetooth` button=1><action=`blueberry` button=3>%bluetooth%</action></action>    %multicoretemp%   %weather%      "
-     
+   -- , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %RJTT% | %date% || %kbd% "
+   , template = "
+   <fn=1><fc=#abb2bf></fc></fn>
+   %StdinReader%
+   }
+   <action='gnome-calendar'><fc=#ffffff><fn=2>%myDate%</fn></fc></action> 
+   {
+    -- %default:Master%    
+  <action='changekeyboard'>%kbd%</action>
+  <action=`mic-control toggle` button=1>%mic%</action>
+  <action=`flameshot gui` button=1><action=`gnome-screenshot -i` button=3><fn=6></fn></action></action>
+  <action=`blueman-manager` button=1>%bluetooth%</action>
+  %multicoretemp% 
+  %SANT%   "
+ 
    -- general behavior
-   , lowerOnStart =     False    -- send to bottom of window stack on start
+   , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
-   , pickBroadest =     True   -- choose widest display (multi-monitor)
+   , pickBroadest =     False   -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
 
    -- plugins
@@ -61,82 +57,107 @@ Config {
    , commands = 
 
         -- weather monitor
-        [ Run Weather "SANT1" [ "--template", "<fn=1></fn> <tempC>°C" ] 36000
+        -- [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
+                             -- ] 36000
+
+        -- weather monitor
+        [ Run Weather "RJTT" [ "--template", "<fn=1> /fn> <tempC>°C" ] 36000
 
         , Run WeatherX "SANT"
-             [ ("clear", "")
-             , ("sunny", "")
-             , ("mostly clear", "")
-             , ("mostly sunny", "")
-             , ("partly sunny", "")
-             , ("fair", "🌑")
-             , ("cloudy","")
-             , ("overcast","")
-             , ("partly cloudy", "ﭼ")
-             , ("mostly cloudy", "歹")
-             , ("considerable cloudiness", "")]
-             ["-t", "<fn=1><skyConditionS></fn> <tempC>°C"
+             [ ("clear", " ")
+             , ("sunny", " ")
+             , ("mostly clear", " ")
+             , ("mostly sunny", " ")
+             , ("partly sunny", " ")
+             , ("fair", "🌑 ")
+             , ("cloudy"," ")
+             , ("overcast"," ")
+             , ("partly cloudy", "ﭼ ")
+             , ("mostly cloudy", "歹 ")
+             , ("considerable cloudiness", " ")]
+             ["-t", "<fn=1><skyConditionS></fn><tempC>°C"
              , "-L","15", "-H", "29", "--normal", "#abb2bf"
              , "--high", "#d19a66", "--low", "#61aeee"]
              18000
 
+        -- network activity monitor (dynamic interface resolution)
+        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                             , "--Low"      , "1000"       -- units: B/s
+                             , "--High"     , "5000"       -- units: B/s
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 10
+
+        -- cpu activity monitor
+        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+                             , "--Low"      , "50"         -- units: %
+                             , "--High"     , "85"         -- units: %
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 10
+
+        -- cpu core temperature monitor
+        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+                             , "--Low"      , "70"        -- units: °C
+                             , "--High"     , "80"        -- units: °C
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 50
+                          
+        -- memory usage monitor
+        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "90"        -- units: %
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 10
+
+        -- battery monitor
+        , Run Battery        [ "--template" , "Batt: <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "darkred"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkgreen"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+
+                             -------------------------
+
         -- StdinReader
         , Run StdinReader
 
+        -- mic-control indicator
+        , Run Com "mic-control" ["status"] "mic" 5
+
         -- cpu core temperature monitor
         , Run MultiCoreTemp ["-t", " <avg>°C", "-hwmonitor-path", "/sys/module/k10temp/drivers/pci:k10temp/0000:00:18.3/hwmon/hwmon2"] 50
-
-        -- battery monitor
-        , Run Battery        [ "--template" , "<acstatus>"
-                             , "--Low"      , "15"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "#e06c75"
-                             -- , "--normal"   , "#ffffff"
-                             -- , "--high"     , "#ffffff"
-
-                             , "--" -- battery specific options
-                                       , "-A", "15"
-                                       , "-a", "dunstify \"Battery\" \"You must plug in the battery now\" -u critical -i ~/dotfiles/icons/fontawesome/battery-alert.svg"
-                                       -- discharging status
-                                       , "-o"	, "<fn=4></fn> <left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O"	, "<fn=1></fn> <left>%"
-                                       -- charged status
-                                       , "-i"	, "<fn=1></fn> <left>%"
-                             ] 50
-
-        -- time and date indicator 
-        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-
-        -- Date indicator
-        , Run Date "<action='gnome-calendar'><fc=#ffffff><fn=3>%a %d %Y - %H:%M</fn></fc></action>" "date" 50
-        , Run Com "date" ["+%A, %d de %b - %H:%M"] "myDate" 50
 
         -- keyboard layout indicator
         , Run Kbd            [ ("es" , "<fc=#e06c75><fn=6></fn> ES</fc>")
                              , ("us" , "<fn=6></fn> US")
                              ]
-      
-        -- volume indicator
-         , Run Volume "default" "Master" ["-t", "<action=`volume-control toggle` button=1><action=`pavucontrol` button=2><action=`tilix -e pulsemixer` button=3><action=`volume-control up` button=4><action=`volume-control down` button=5><status></action></action></action></action></action>"
-                                         , "--"
-                                         , "-C", "#abb2bf"
-                                         , "-O", "<fn=1>墳</fn> <volume>%"
-                                         , "-c", "#e06c75"
-                                         , "-o", "<fn=1>婢</fn>"
-                                        ] 5
-
-        -- mic-control indicator
-        , Run Com "mic-control" ["status"] "mic" 5
-
-        -- weather indicator
-        , Run Com "weather-control" [] "weather" 36000
 
         -- bluetooth indicator
         , Run Com "bluetooth-control" ["status"] "bluetooth" 5
 
-        -- wireless interface
-        , Run Wireless "wlo1" ["-t", "<action='rofi-wifi-menu'><fn=1></fn> <ssid></action>"] 3600
+                             -------------------------
+
+        -- time and date indicator 
+        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
+        -- , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+        , Run Com "date" ["+%A, %d de %b - %H:%M"] "myDate" 50
 
         ]
    }

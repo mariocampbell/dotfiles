@@ -42,7 +42,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -308,8 +308,8 @@ myPP = xmobarPP {
                    , ppLayout = (\layout -> case layout of
                                    "Spacing Tall"        -> "Vertical"
                                    "Spacing Mirror Tall" -> "Horizontal"
-                                   "Spacing ThreeCol"    -> "ThreeCol"
                                    "Full"      -> "Full"
+                                   "Spacing ThreeCol"    -> "ThreeCol"
                                 )
                   , ppHidden = xmobarColor "#5c6370" ""
                 }
@@ -325,8 +325,10 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 -- main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
 main :: IO ()
 main = do
-    xmobarProc0 <- spawnPipe "xmobar -x 1 ~/dotfiles/xmobar/xmobarrc0"
-    xmobarProc1 <- spawnPipe "xmobar -x 0 ~/dotfiles/xmobar/xmobarrc1"
+    -- xmobarProc0 <- spawnPipe "xmobar -x 1 ~/dotfiles/xmobar/xmobarrc0"
+    -- xmobarProc1 <- spawnPipe "xmobar -x 0 ~/dotfiles/xmobar/xmobarrc1"
+    xmobarProc0 <- spawnPipe "xmobar -x 1 ~/dotfiles/.xmonad/.xmobarrc"
+    xmobarProc1 <- spawnPipe "xmobar -x 0 ~/dotfiles/.xmonad/.xmobarrc"
     xmonad $ docks $ defaults { logHook = dynamicLogWithPP myPP { ppOutput = \x -> hPutStrLn xmobarProc0 x >> hPutStrLn xmobarProc1 x } }
 
 -- A structure containing your configuration settings, overriding
