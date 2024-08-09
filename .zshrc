@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:/usr/bin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -160,7 +161,7 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude .git . "$1"
 }
 
-source ~/fzf-git.sh/fzf-git.sh
+# source ~/fzf-git.sh/fzf-git.sh
 
 # Redefine this function to change the options
 _fzf_git_fzf() {
