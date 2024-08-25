@@ -326,8 +326,8 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 -- main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
 main :: IO ()
 main = do
-    xmobarProc0 <- spawnPipe "xmobar -x 1 ~/dotfiles/xmobar/xmobarrc0"
-    xmobarProc1 <- spawnPipe "xmobar -x 0 ~/dotfiles/xmobar/xmobarrc1"
+    xmobarProc0 <- spawnPipe "xmobar -x 1 ~/dotfiles/xmobar/.xmobar0rc"
+    xmobarProc1 <- spawnPipe "xmobar -x 0 ~/dotfiles/xmobar/.xmobar1rc"
     xmonad $ docks $ defaults { logHook = dynamicLogWithPP myPP { ppOutput = \x -> hPutStrLn xmobarProc0 x >> hPutStrLn xmobarProc1 x } }
 
 -- A structure containing your configuration settings, overriding

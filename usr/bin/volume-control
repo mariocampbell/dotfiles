@@ -4,8 +4,8 @@ CARD=@DEFAULT_SINK@
 
 if [ "$1" = "toggle" ]; then
     pactl set-sink-mute $CARD toggle
-    VOLUME="$(amixer get Master | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
-    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$VOLUME" = "off" ] && echo "-mute").svg -r 100811
+    MUTE=$(pactl get-sink-mute $CARD | grep -oP "(yes|no)")
+    dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume$([ "$MUTE" = "yes" ] && echo "-mute").svg -r 100811
     exit 0
 fi
 
@@ -20,5 +20,18 @@ if [ "$1" = "down" ]; then
     pactl set-sink-mute $CARD false
     pactl set-sink-volume $CARD -5%
     dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/volume-down.svg -r 100811
+    exit 0
+fi
+
+if [ "$1" = "status" ]; then
+    VOLUME=$(pactl get-sink-volume $CARD | grep -oP '\d+%' | head -1)
+    MUTE=$(pactl get-sink-mute $CARD | grep -oP "(yes|no)")
+
+    if [ "$MUTE" = "no" ]; then
+        echo "   $VOLUME  "
+    else
+        echo "<fc=#e06c75>󰖁  </fc>"
+    fi
+
     exit 0
 fi

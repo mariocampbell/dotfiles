@@ -1,19 +1,22 @@
 #!/bin/bash
 
+MIC_SOURCE=$(pactl list sources short | grep -i 'input' | awk '{print $1}')
+MUTE=$(pactl get-source-mute $MIC_SOURCE | grep -oP '(?<=Mute: )\w+')
+
 if [ "$1" = "toggle" ]; then
-  MIC="$(amixer set Capture toggle | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')"
-  dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$MIC" = "off" ] && echo "-mute").svg -r 100811
-  paplay ~/discord-$([ "$MIC" = "on" ] && echo "un")mute-mic.ogg --volume 50000
+  pactl set-source-mute "$MIC_SOURCE" toggle
+  dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$MUTE" = "no" ] && echo "-mute").svg -r 100811
+  paplay ~/discord-$([ "$MUTE" = "no" ] && echo "un")mute-mic.ogg --volume 50000
+  echo "$MUTE"
   exit 0
 fi
 
 if [ "$1" = "status" ]; then
-  STATUS=$(amixer | tail -n1 | sed -E 's/.*\[(on|off)\]/\1/')
-  if [ "$STATUS" = "off" ]; then
-    echo "<fc=#e06c75><fn=5></fn></fc>"
+  if [ "$MUTE" = "yes" ]; then
+    echo "<fc=#e06c75><fn=0></fn></fc>"
     exit 0
   else
-    echo "<fn=4></fn>"
+    echo "<fn=0> </fn>"
     exit 0
   fi
 fi
