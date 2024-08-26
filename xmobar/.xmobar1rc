@@ -61,15 +61,15 @@ Config {
 
         , Run WeatherX "SANT"
              [ ("clear", "")
-             , ("sunny", "")
-             , ("mostly clear", "")
-             , ("mostly sunny", "")
-             , ("partly sunny", "")
-             , ("fair", "🌑")
-             , ("cloudy","")
-             , ("overcast","")
-             , ("partly cloudy", "")
-             , ("mostly cloudy", "歹")
+             , ("sunny", "󰖨")
+             , ("mostly clear", "")
+             , ("mostly sunny", "")
+             , ("partly sunny", "")
+             , ("fair", "")
+             , ("cloudy","")
+             , ("overcast","")
+             , ("partly cloudy", "")
+             , ("mostly cloudy", "")
              , ("considerable cloudiness", "")]
              ["-t", "<fn=1><skyConditionS></fn>  <tempC>°C"
              , "-L","15", "-H", "29", "--normal", "#abb2bf"

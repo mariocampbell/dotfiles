@@ -6,7 +6,7 @@ MUTE=$(pactl get-source-mute $MIC_SOURCE | grep -oP '(?<=Mute: )\w+')
 if [ "$1" = "toggle" ]; then
   pactl set-source-mute "$MIC_SOURCE" toggle
   dunstify "" -u low -t 1500 -i ~/dotfiles/icons/fontawesome/microphone$([ "$MUTE" = "no" ] && echo "-mute").svg -r 100811
-  paplay ~/discord-$([ "$MUTE" = "no" ] && echo "un")mute-mic.ogg --volume 50000
+  paplay ~/dotfiles/sounds/discord-$([ "$MUTE" = "no" ] && echo "un")mute-mic.ogg --volume 50000
   echo "$MUTE"
   exit 0
 fi
