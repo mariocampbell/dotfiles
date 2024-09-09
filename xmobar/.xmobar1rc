@@ -12,7 +12,7 @@ Config {
      ]
    , bgColor =      "#000000"
    , fgColor =      "#abb2bf"
-   , alpha = 100
+   , alpha = 255
    , position = TopHM 30 10 10 5 0
 
    -- layout
