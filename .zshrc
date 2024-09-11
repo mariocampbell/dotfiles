@@ -124,14 +124,8 @@ alias la="exa -la"
 alias tm=tmux
 alias cl=clear
 
-function openNvim {
-  if [ $# -eq 0 ]; then
-    nvim ./
-  else
-    nvim $1
-  fi
-}
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+export EDITOR="emacs -nw"
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
