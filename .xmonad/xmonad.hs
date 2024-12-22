@@ -289,8 +289,7 @@ myLogHook xmobarProc0 xmobarProc1 = dynamicLogWithPP myPP { ppOutput = \x -> hPu
 -- By default, do nothing.
 myStartupHook = do
     -- spawnOnce "autorandr --change"
-    -- spawnOnce "xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --off"
-    spawnOnce "xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --off --output DP-1 --mode 1920x1080 --pos 1920x0 --rotate normal"
+    spawnOnce "xrandr --output DP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal"
     spawnOnce "xautolock -time 5 -locker \"betterlockscreen -l\" -detectsleep -corners --00"
     spawnOnce "picom &"
     spawnOnce "feh --bg-fill ~/wallpaper.jpg"
