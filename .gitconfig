@@ -45,7 +45,8 @@
 
 [merge]
 	tool = nvim
-	conflictstyle = diff3
+	# conflictstyle = diff3
+	conflictstyle = conflictstyle = zdiff3
 
 [mergetool]
 	prompt = false
